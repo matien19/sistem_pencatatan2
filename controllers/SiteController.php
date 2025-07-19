@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\User;
 
 class SiteController extends Controller
 {
@@ -20,10 +20,14 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout'],
+                'only' => ['logout', 'index', 'dashboard'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'dashboard'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -46,10 +50,6 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
@@ -77,11 +77,27 @@ class SiteController extends Controller
 
         $this->layout = 'main-login'; // Set a specific layout for the login page
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+    if ($model->load(Yii::$app->request->post())) {
+        $user = User::findOne(['username' => $model->username]);
+
+        if ($user && $user->validatePassword($model->password)) {
+        Yii::$app->user->login($user);
+
+        // Redirect based on role
+        if ($user->role === 'staf') {
+            return $this->redirect(['beranda/index']);
+        } elseif ($user->role === 'calon_siswa' || $user->role === 'siswa') {
+            return $this->redirect(['beranda/siswa']);
+        } else {
             return $this->goBack();
         }
+        }
 
+        Yii::$app->session->setFlash('error', 'Username atau password salah.');
+    }
+    
         $model->password = '';
+    
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -104,26 +120,4 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }
