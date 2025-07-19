@@ -47,7 +47,12 @@
                                 'url' => ['jurusan/index'],
                                 'active' => Yii::$app->controller->id === 'jurusan',
                             ],
-                            ['label' => 'Kelas', 'iconStyle' => 'far', 'url' => ['#']],
+                            [
+                                'label' => 'Kelas', 
+                                'iconStyle' => 'far', 
+                                'url' => ['kelas/index'],
+                                'active' => Yii::$app->controller->id === 'kelas',
+                            ],
                             ['label' => 'Calon Siswa', 'iconStyle' => 'far', 'url' => ['#']],
                             ['label' => 'Siswa', 'iconStyle' => 'far', 'url' => ['#']],
                             ['label' => 'staf', 'iconStyle' => 'far', 'url' => ['#']],
