@@ -35,7 +35,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['auth_key' => $token]);
+        return static::findOne(['username' => $token]);
     }
 
     public function getId()
@@ -79,13 +79,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['email_verified_at', 'remember_token', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['email_verified_at', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['role'], 'default', 'value' => 'staf'],
             [['username', 'nama', 'email', 'password'], 'required'],
             [['email_verified_at', 'created_at', 'updated_at'], 'safe'],
             [['role'], 'string'],
             [['username', 'nama', 'email', 'password'], 'string', 'max' => 255],
-            [['remember_token'], 'string', 'max' => 100],
             ['role', 'in', 'range' => array_keys(self::optsRole())],
             [['username'], 'unique'],
             [['email'], 'unique'],

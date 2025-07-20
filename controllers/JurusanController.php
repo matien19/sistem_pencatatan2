@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\JurusanModel;
 use app\models\SearchJurusanModel;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,7 +25,19 @@ class JurusanController extends Controller
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
-                        'delete' => ['POST'],
+                    'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                        return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role === 'staf';
+                        },
+                    ],
                     ],
                 ],
             ]

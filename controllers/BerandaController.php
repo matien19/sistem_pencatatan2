@@ -69,11 +69,11 @@ class BerandaController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('/admin/index');
+        return $this->render('/beranda/index');
     }
     
     public function actionSiswa()
     {
-        return $this->render('/siswa/index');
+        return $this->render('/beranda/siswa');
     }
 }

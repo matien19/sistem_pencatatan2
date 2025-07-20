@@ -45,8 +45,8 @@ class SiswaModel extends \yii\db\ActiveRecord
             [['nama'], 'string', 'max' => 50],
             [['nisn'], 'string', 'max' => 20],
             [['no_hp'], 'string', 'max' => 13],
-            [['kelas_id'], 'exist', 'skipOnError' => true, 'targetClass' => Kelas::class, 'targetAttribute' => ['kelas_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['kelas_id'], 'exist', 'skipOnError' => true, 'targetClass' => KelasModel::class, 'targetAttribute' => ['kelas_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -61,7 +61,7 @@ class SiswaModel extends \yii\db\ActiveRecord
             'nisn' => 'Nisn',
             'no_hp' => 'No Hp',
             'user_id' => 'User ID',
-            'kelas_id' => 'Kelas ID',
+            'kelas_id' => 'Kelas',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -74,7 +74,7 @@ class SiswaModel extends \yii\db\ActiveRecord
      */
     public function getKelas()
     {
-        return $this->hasOne(Kelas::class, ['id' => 'kelas_id']);
+        return $this->hasOne(KelasModel::class, ['id' => 'kelas_id']);
     }
 
     /**
@@ -82,10 +82,10 @@ class SiswaModel extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getTagihans()
-    {
-        return $this->hasMany(Tagihan::class, ['siswa_id' => 'id']);
-    }
+    // public function getTagihans()
+    // {
+    //     return $this->hasMany(Tagihan::class, ['siswa_id' => 'id']);
+    // }
 
     /**
      * Gets query for [[User]].
@@ -94,7 +94,7 @@ class SiswaModel extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::class, ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
 }

@@ -54,7 +54,12 @@
                                 'active' => Yii::$app->controller->id === 'kelas',
                             ],
                             ['label' => 'Calon Siswa', 'iconStyle' => 'far', 'url' => ['#']],
-                            ['label' => 'Siswa', 'iconStyle' => 'far', 'url' => ['#']],
+                            [
+                                'label' => 'Siswa',
+                                'iconStyle' => 'far',
+                                'url' => ['siswa/index'],
+                                'active' => Yii::$app->controller->id === 'siswa',
+                            ],
                             ['label' => 'staf', 'iconStyle' => 'far', 'url' => ['#']],
                         ]
                     ],
