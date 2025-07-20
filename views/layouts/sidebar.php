@@ -60,7 +60,12 @@
                                 'url' => ['siswa/index'],
                                 'active' => Yii::$app->controller->id === 'siswa',
                             ],
-                            ['label' => 'staf', 'iconStyle' => 'far', 'url' => ['#']],
+                            [
+                                'label' => 'staf', 
+                                'iconStyle' => 'far', 
+                                'url' => ['staf/index'],
+                                'active' => Yii::$app->controller->id === 'staf',
+                            ],
                         ]
                     ],
                 ],

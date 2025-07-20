@@ -2,17 +2,17 @@
 
 namespace app\controllers;
 
-use app\models\KelasModel;
-use app\models\SearchKelasModel;
+use app\models\User;
+use app\models\SearchUser;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * KelasController implements the CRUD actions for KelasModel model.
+ * UserController implements the CRUD actions for User model.
  */
-class KelasController extends Controller
+class StafController extends Controller
 {
     /**
      * @inheritDoc
@@ -31,13 +31,13 @@ class KelasController extends Controller
                 'access' => [
                     'class' => AccessControl::class,
                     'rules' => [
-                        [
-                            'allow' => true,
-                            'roles' => ['@'],
-                            'matchCallback' => function ($rule, $action) {
-                            return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role === 'staf';
-                            },
-                        ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                        return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role === 'staf';
+                        },
+                    ],
                     ],
                 ],
             ]
@@ -45,15 +45,15 @@ class KelasController extends Controller
     }
 
     /**
-     * Lists all KelasModel models.
+     * Lists all User models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new SearchKelasModel();
+        $searchModel = new SearchUser();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize = 10; // Atur jumlah data per halaman
+        $dataProvider->query->andWhere(['role' => 'staf']);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -62,7 +62,7 @@ class KelasController extends Controller
     }
 
     /**
-     * Displays a single KelasModel model.
+     * Displays a single User model.
      * @param string $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -75,21 +75,23 @@ class KelasController extends Controller
     }
 
     /**
-     * Creates a new KelasModel model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new KelasModel();
+        $model = new User();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-            $model->created_at = date('Y-m-d H:i:s');
-            $model->updated_at = date('Y-m-d H:i:s');
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+                $model->role = 'staf';
+                $model->password = \Yii::$app->security->generatePasswordHash($this->request->post('User')['username'] ?? 'password');
+                $model->created_at = date('Y-m-d H:i:s');
+                $model->updated_at = date('Y-m-d H:i:s');
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -101,7 +103,7 @@ class KelasController extends Controller
     }
 
     /**
-     * Updates an existing KelasModel model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id ID
      * @return string|\yii\web\Response
@@ -124,7 +126,7 @@ class KelasController extends Controller
     }
 
     /**
-     * Deletes an existing KelasModel model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id ID
      * @return \yii\web\Response
@@ -138,15 +140,15 @@ class KelasController extends Controller
     }
 
     /**
-     * Finds the KelasModel model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id ID
-     * @return KelasModel the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = KelasModel::findOne(['id' => $id])) !== null) {
+        if (($model = User::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
