@@ -11,14 +11,36 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="kelas-model-form">
+    <?php
+    $currentYear = date('Y');
+    $startYear = $currentYear - 3;
+    // $endYear = $currentYear + 2;
+
+    $tahunOptions = ['' => 'Pilih Tahun'];
+    for ($year = $startYear; $year <= $currentYear; $year++) {
+        $tahunOptions[$year] = $year;
+    }
+    ?>
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'kelas')->textInput(['maxlength' => true]) ?>
+   <?= $form->field($model, 'nama')->dropDownList([
+        '' => 'Pilih Nama',
+        'A' => 'A',
+        'B' => 'B',
+        'C' => 'C',
+        'D' => 'D',
+        'E' => 'E',
+        'F' => 'F',
+        'G' => 'G',
+        'H' => 'H',
+        'I' => 'I',
+    ], ['class' => 'form-control']) ?>
 
-    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'tahun_masuk')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tahun_masuk')->dropDownList(
+        $tahunOptions,
+        ['class' => 'form-control']
+    ) ?>
 
     <?= $form->field($model, 'jurusan_id')->dropDownList(
         ArrayHelper::map(JurusanModel::find()->all(), 'id', 'nama'),

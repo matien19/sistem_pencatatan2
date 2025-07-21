@@ -53,8 +53,26 @@ class KelasController extends Controller
     {
         $searchModel = new SearchKelasModel();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize = 10; // Atur jumlah data per halaman
+        $dataProvider->pagination->pageSize = 10;
 
+        $currentYear = date('Y');
+
+        $dataKelas = KelasModel::find()->orderBy(['created_at' => SORT_DESC])->all(); // ambil max 100, bisa disesuaikan
+
+        foreach ($dataKelas as $item) {
+            $academicYear = (int) $item->tahun_masuk;
+            $classNumber = $currentYear - $academicYear + 1;
+
+            // Batas logika kelas 1 sampai 3
+            if ($classNumber < 1) {
+                $classNumber = 1;
+            } elseif ($classNumber > 3) {
+                $classNumber = 3;
+            }
+
+            $item->kelas = $classNumber;
+            $item->save(false); // false = skip validasi, bisa diganti true jika validasi diperlukan
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -85,11 +103,25 @@ class KelasController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-            $model->created_at = date('Y-m-d H:i:s');
-            $model->updated_at = date('Y-m-d H:i:s');
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+                $currentYear = date('Y');
+                $tahun_masuk = $this->request->post('KelasModel')['tahun_masuk'];
+
+                $classNumber = $currentYear - $tahun_masuk + 1;
+                
+                if ($classNumber < 1) {
+                    $classNumber = 1;
+                } elseif ($classNumber > 3) {
+                    $classNumber = 3;
+                }
+                
+                $model->kelas = $classNumber;
+                $model->tahun_masuk = $tahun_masuk;
+                $model->created_at = date('Y-m-d H:i:s');
+                $model->updated_at = date('Y-m-d H:i:s');
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+                $model->addErrors($model->getErrors());
             }
         } else {
             $model->loadDefaultValues();

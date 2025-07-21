@@ -40,7 +40,7 @@ class KelasModel extends \yii\db\ActiveRecord
             [['kelas', 'nama', 'tahun_masuk', 'jurusan_id'], 'required'],
             [['jurusan_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['kelas', 'nama', 'tahun_masuk'], 'string', 'max' => 255],
+            [[ 'nama', 'tahun_masuk'], 'string', 'max' => 255],
             [['jurusan_id'], 'exist', 'skipOnError' => true, 'targetClass' => JurusanModel::class, 'targetAttribute' => ['jurusan_id' => 'id']],
         ];
     }
