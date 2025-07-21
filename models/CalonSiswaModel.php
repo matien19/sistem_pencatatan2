@@ -45,8 +45,8 @@ class CalonSiswaModel extends \yii\db\ActiveRecord
             [['nama'], 'string', 'max' => 50],
             [['no_pendaftaran'], 'string', 'max' => 20],
             [['no_hp'], 'string', 'max' => 13],
-            [['jurusan_id'], 'exist', 'skipOnError' => true, 'targetClass' => Jurusan::class, 'targetAttribute' => ['jurusan_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['jurusan_id'], 'exist', 'skipOnError' => true, 'targetClass' => JurusanModel::class, 'targetAttribute' => ['jurusan_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -61,7 +61,7 @@ class CalonSiswaModel extends \yii\db\ActiveRecord
             'no_pendaftaran' => 'No Pendaftaran',
             'no_hp' => 'No Hp',
             'user_id' => 'User ID',
-            'jurusan_id' => 'Jurusan ID',
+            'jurusan_id' => 'Jurusan',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -74,7 +74,7 @@ class CalonSiswaModel extends \yii\db\ActiveRecord
      */
     public function getJurusan()
     {
-        return $this->hasOne(Jurusan::class, ['id' => 'jurusan_id']);
+        return $this->hasOne(JurusanModel::class, ['id' => 'jurusan_id']);
     }
 
     /**
@@ -82,10 +82,10 @@ class CalonSiswaModel extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getTagihans()
-    {
-        return $this->hasMany(Tagihan::class, ['calon_siswa_id' => 'id']);
-    }
+    // public function getTagihans()
+    // {
+    //     return $this->hasMany(Tagihan::class, ['calon_siswa_id' => 'id']);
+    // }
 
     /**
      * Gets query for [[User]].
@@ -94,7 +94,7 @@ class CalonSiswaModel extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::class, ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
 }

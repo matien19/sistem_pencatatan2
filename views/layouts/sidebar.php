@@ -13,7 +13,7 @@
                 <img src="<?=$assetDir?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= Yii::$app->user->identity->username ?? '' ?></a>
+                <a href="#" class="d-block"><?= Yii::$app->user->identity->nama ?? '' ?></a>
             </div>
         </div>
 
@@ -33,9 +33,17 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?php
-            echo \hail812\adminlte\widgets\Menu::widget([
-                'items' => [
-                    ['label' => 'Beranda', 'icon' => 'tachometer-alt','url' => ['beranda/index']],
+            $userRole = Yii::$app->user->identity->role ?? '';
+
+            if ($userRole == 'siswa' || $userRole == 'calon_siswa' ) {
+                $menuItems = [
+                    ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/siswa']],
+                    ['label' => 'Tagihan', 'icon' => 'file-invoice-dollar', 'url' => ['']],
+                    // For 'staf' role, maybe limit menu items or customize here
+                ];
+            } else {
+                $menuItems = [
+                    ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/index']],
                     ['label' => 'Tagihan', 'icon' => 'file-invoice-dollar', 'url' => ['']],
                     [
                         'label' => 'Master Data',
@@ -48,12 +56,17 @@
                                 'active' => Yii::$app->controller->id === 'jurusan',
                             ],
                             [
-                                'label' => 'Kelas', 
-                                'iconStyle' => 'far', 
+                                'label' => 'Kelas',
+                                'iconStyle' => 'far',
                                 'url' => ['kelas/index'],
                                 'active' => Yii::$app->controller->id === 'kelas',
                             ],
-                            ['label' => 'Calon Siswa', 'iconStyle' => 'far', 'url' => ['#']],
+                            [
+                                'label' => 'Calon Siswa',
+                                'iconStyle' => 'far',
+                                'url' => ['calon-siswa/index'],
+                                'active' => Yii::$app->controller->id === 'calon-siswa',
+                            ],
                             [
                                 'label' => 'Siswa',
                                 'iconStyle' => 'far',
@@ -61,14 +74,18 @@
                                 'active' => Yii::$app->controller->id === 'siswa',
                             ],
                             [
-                                'label' => 'staf', 
-                                'iconStyle' => 'far', 
+                                'label' => 'staf',
+                                'iconStyle' => 'far',
                                 'url' => ['staf/index'],
                                 'active' => Yii::$app->controller->id === 'staf',
                             ],
-                        ]
+                        ],
                     ],
-                ],
+                ];
+            }
+
+            echo \hail812\adminlte\widgets\Menu::widget([
+                'items' => $menuItems,
             ]);
             ?>
         </nav>
