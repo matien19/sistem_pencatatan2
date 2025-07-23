@@ -74,10 +74,16 @@
                                 'active' => Yii::$app->controller->id === 'siswa',
                             ],
                             [
-                                'label' => 'staf',
+                                'label' => 'Staf',
                                 'iconStyle' => 'far',
                                 'url' => ['staf/index'],
                                 'active' => Yii::$app->controller->id === 'staf',
+                            ],
+                            [
+                                'label' => 'Jenis Pembayaran',
+                                'iconStyle' => 'far',
+                                'url' => ['jenis-pembayaran/index'],
+                                'active' => Yii::$app->controller->id === 'jenis-pembayaran',
                             ],
                         ],
                     ],

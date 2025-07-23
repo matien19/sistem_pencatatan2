@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c51a131f2aec3e2d303a54189e0977f4",
+    "content-hash": "7cd4bb459edcfe9bbf4ce90d363cd15f",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -49,21 +49,6 @@
                 "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3"
             },
             "time": "2023-05-09T20:38:52+00:00"
-        },
-        {
-            "name": "bower-asset/bootstrap",
-            "version": "v5.3.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "e0032ae6a5a628a51a8552091816cec09b6434df"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e0032ae6a5a628a51a8552091816cec09b6434df",
-                "reference": "e0032ae6a5a628a51a8552091816cec09b6434df"
-            },
-            "type": "bower-asset"
         },
         {
             "name": "bower-asset/inputmask",
@@ -694,6 +679,71 @@
             "time": "2022-06-28T04:31:04+00:00"
         },
         {
+            "name": "kartik-v/yii2-widget-select2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-select2.git",
+                "reference": "958ba374af39fbc88f1fd11209b22efe1055d567"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/958ba374af39fbc88f1fd11209b22efe1055d567",
+                "reference": "958ba374af39fbc88f1fd11209b22efe1055d567",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-krajee-base": ">=3.0.4",
+                "select2/select2": ">=4.0.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\select2\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Enhanced Yii2 wrapper for the Select2 jQuery plugin (sub repo split from yii2-widgets).",
+            "homepage": "https://github.com/kartik-v/yii2-widget-select2",
+            "keywords": [
+                "dropdown",
+                "extension",
+                "form",
+                "jquery",
+                "plugin",
+                "select2",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/kartik-v/yii2-widget-select2/issues",
+                "source": "https://github.com/kartik-v/yii2-widget-select2/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/yii2-widget-select2",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-07-24T05:21:32+00:00"
+        },
+        {
             "name": "mpdf/mpdf",
             "version": "v8.2.5",
             "source": {
@@ -1203,6 +1253,59 @@
             "time": "2024-09-11T13:17:53+00:00"
         },
         {
+            "name": "select2/select2",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/select2/select2.git",
+                "reference": "595494a72fee67b0a61c64701cbb72e3121f97b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/select2/select2/zipball/595494a72fee67b0a61c64701cbb72e3121f97b9",
+                "reference": "595494a72fee67b0a61c64701cbb72e3121f97b9",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "component",
+            "extra": {
+                "component": {
+                    "files": [
+                        "dist/js/select2.js",
+                        "dist/js/i18n/*.js",
+                        "dist/css/select2.css"
+                    ],
+                    "styles": [
+                        "dist/css/select2.css"
+                    ],
+                    "scripts": [
+                        "dist/js/select2.js"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Select2 is a jQuery based replacement for select boxes.",
+            "homepage": "https://select2.org/",
+            "support": {
+                "issues": "https://github.com/select2/select2/issues",
+                "source": "https://github.com/select2/select2/tree/develop"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kevin-brown",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/select2",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-09-11T14:53:51+00:00"
+        },
+        {
             "name": "setasign/fpdi",
             "version": "v2.6.3",
             "source": {
@@ -1505,12 +1608,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "a7a495a34692842527f12136b7fb1ead572914fd"
+                "reference": "36ae5bcc39d850a63726da0ffdcd3629a7120d76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/a7a495a34692842527f12136b7fb1ead572914fd",
-                "reference": "a7a495a34692842527f12136b7fb1ead572914fd",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/36ae5bcc39d850a63726da0ffdcd3629a7120d76",
+                "reference": "36ae5bcc39d850a63726da0ffdcd3629a7120d76",
                 "shasum": ""
             },
             "require": {
@@ -1577,7 +1680,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-08T09:31:55+00:00"
+            "time": "2025-07-15T11:38:11+00:00"
         },
         {
             "name": "symfony/mime",
@@ -1585,12 +1688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "d7a56d05c7a81e9565912c5f705bfa3b72cab5e3"
+                "reference": "3d2cef073f8a295b959260c9a5698af7bb4c6c3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/d7a56d05c7a81e9565912c5f705bfa3b72cab5e3",
-                "reference": "d7a56d05c7a81e9565912c5f705bfa3b72cab5e3",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/3d2cef073f8a295b959260c9a5698af7bb4c6c3b",
+                "reference": "3d2cef073f8a295b959260c9a5698af7bb4c6c3b",
                 "shasum": ""
             },
             "require": {
@@ -1661,7 +1764,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-07T08:24:36+00:00"
+            "time": "2025-07-16T09:26:03+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -1917,12 +2020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "f021b05a130d35510bd6b25fe9053c2a8a15d5d4"
+                "reference": "45112560a3ba2d715666a509a0bc9521d10b6c43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f021b05a130d35510bd6b25fe9053c2a8a15d5d4",
-                "reference": "f021b05a130d35510bd6b25fe9053c2a8a15d5d4",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/45112560a3ba2d715666a509a0bc9521d10b6c43",
+                "reference": "45112560a3ba2d715666a509a0bc9521d10b6c43",
                 "shasum": ""
             },
             "require": {
@@ -1977,7 +2080,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.6.0"
+                "source": "https://github.com/symfony/service-contracts/tree/main"
             },
             "funding": [
                 {
@@ -1993,7 +2096,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-25T09:37:31+00:00"
+            "time": "2025-07-15T11:30:57+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -2001,12 +2104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "a5eada136bc85bc280378572e7e64c4fcd183e08"
+                "reference": "8eb1faa791de40527c83561683a0c17511744349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a5eada136bc85bc280378572e7e64c4fcd183e08",
-                "reference": "a5eada136bc85bc280378572e7e64c4fcd183e08",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8eb1faa791de40527c83561683a0c17511744349",
+                "reference": "8eb1faa791de40527c83561683a0c17511744349",
                 "shasum": ""
             },
             "require": {
@@ -2115,7 +2218,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-11T15:18:27+00:00"
+            "time": "2025-07-19T13:52:26+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
@@ -2216,89 +2319,6 @@
                 }
             ],
             "time": "2025-02-13T21:11:27+00:00"
-        },
-        {
-            "name": "yiisoft/yii2-bootstrap5",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-bootstrap5.git",
-                "reference": "bd19a9d413a5778f09ec6f8e2fe8105cd4bf11d6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap5/zipball/bd19a9d413a5778f09ec6f8e2fe8105cd4bf11d6",
-                "reference": "bd19a9d413a5778f09ec6f8e2fe8105cd4bf11d6",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/bootstrap": "^5.2.3",
-                "ext-json": "*",
-                "php": ">=7.3",
-                "yiisoft/yii2": "^2.0.42"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.6",
-                "symplify/easy-coding-standard": "^12.1",
-                "twbs/bootstrap-icons": "^1.7.2",
-                "yiisoft/yii2-coding-standards": "~2.0"
-            },
-            "suggest": {
-                "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
-            },
-            "default-branch": true,
-            "type": "yii2-extension",
-            "extra": {
-                "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\bootstrap5\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sergey Zhukovskiy",
-                    "email": "mylistryx@gmail.com",
-                    "homepage": "https://net23.ru/"
-                },
-                {
-                    "name": "Simon Karlen",
-                    "email": "simi.albi@outlook.com"
-                }
-            ],
-            "description": "The Twitter Bootstrap v5 extension for the Yii framework",
-            "keywords": [
-                "bootstrap",
-                "bootstrap5",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/yiisoft/yii2-bootstrap5/issues",
-                "source": "https://github.com/yiisoft/yii2-bootstrap5"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/yiisoft",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/yiisoft",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii2-bootstrap5",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2025-04-11T09:27:32+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -2460,12 +2480,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "b4870b14c0949b72983687b65c1c8ca8590b0856"
+                "reference": "1325278942943332a6bcdc02b99fab76fa20bfb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/b4870b14c0949b72983687b65c1c8ca8590b0856",
-                "reference": "b4870b14c0949b72983687b65c1c8ca8590b0856",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/1325278942943332a6bcdc02b99fab76fa20bfb4",
+                "reference": "1325278942943332a6bcdc02b99fab76fa20bfb4",
                 "shasum": ""
             },
             "require": {
@@ -2473,8 +2493,8 @@
                 "php": "8.1.* || 8.2.* || 8.3.* || 8.4.*"
             },
             "require-dev": {
-                "cucumber/gherkin-monorepo": "dev-gherkin-v32.1.2",
-                "friendsofphp/php-cs-fixer": "^3.65",
+                "cucumber/gherkin-monorepo": "dev-gherkin-v33.0.0",
+                "friendsofphp/php-cs-fixer": "^3.77",
                 "mikey179/vfsstream": "^1.6",
                 "phpstan/extension-installer": "^1",
                 "phpstan/phpstan": "^2",
@@ -2522,7 +2542,7 @@
                 "issues": "https://github.com/Behat/Gherkin/issues",
                 "source": "https://github.com/Behat/Gherkin/tree/master"
             },
-            "time": "2025-06-09T18:58:00+00:00"
+            "time": "2025-07-21T08:27:46+00:00"
         },
         {
             "name": "codeception/codeception",
@@ -3935,12 +3955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a62124f38b2e3c17b2e338dfe5ff9d4ff6279363"
+                "reference": "8d195ce2922031c670c90d8286955946a992ef06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a62124f38b2e3c17b2e338dfe5ff9d4ff6279363",
-                "reference": "a62124f38b2e3c17b2e338dfe5ff9d4ff6279363",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8d195ce2922031c670c90d8286955946a992ef06",
+                "reference": "8d195ce2922031c670c90d8286955946a992ef06",
                 "shasum": ""
             },
             "require": {
@@ -4033,7 +4053,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-13T04:02:54+00:00"
+            "time": "2025-07-18T08:44:00+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -5253,12 +5273,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "67faa9c48ca6b7b1d4346c504d35a1f722e2efbb"
+                "reference": "60f6518f77d4f6b4533f7bb91953354e52fd55f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/67faa9c48ca6b7b1d4346c504d35a1f722e2efbb",
-                "reference": "67faa9c48ca6b7b1d4346c504d35a1f722e2efbb",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/60f6518f77d4f6b4533f7bb91953354e52fd55f7",
+                "reference": "60f6518f77d4f6b4533f7bb91953354e52fd55f7",
                 "shasum": ""
             },
             "require": {
@@ -5313,7 +5333,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-08T09:31:55+00:00"
+            "time": "2025-07-15T09:40:20+00:00"
         },
         {
             "name": "symfony/console",
@@ -5321,12 +5341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "7ad7fdc79778358d2a2da368cd183dbb7ccd94a6"
+                "reference": "7247f4bdc42259f54f2d15a01b50cc3f43cd72cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/7ad7fdc79778358d2a2da368cd183dbb7ccd94a6",
-                "reference": "7ad7fdc79778358d2a2da368cd183dbb7ccd94a6",
+                "url": "https://api.github.com/repos/symfony/console/zipball/7247f4bdc42259f54f2d15a01b50cc3f43cd72cf",
+                "reference": "7247f4bdc42259f54f2d15a01b50cc3f43cd72cf",
                 "shasum": ""
             },
             "require": {
@@ -5407,7 +5427,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-08T09:31:55+00:00"
+            "time": "2025-07-21T08:38:15+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -5415,12 +5435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "601a5ce9aaad7bf10797e3663faefce9e26c24e2"
+                "reference": "9d273d6046583a3b7c9b88250514ee39aa2f61cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/601a5ce9aaad7bf10797e3663faefce9e26c24e2",
-                "reference": "601a5ce9aaad7bf10797e3663faefce9e26c24e2",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/9d273d6046583a3b7c9b88250514ee39aa2f61cb",
+                "reference": "9d273d6046583a3b7c9b88250514ee39aa2f61cb",
                 "shasum": ""
             },
             "require": {
@@ -5456,7 +5476,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v7.3.0-RC1"
+                "source": "https://github.com/symfony/css-selector/tree/7.4"
             },
             "funding": [
                 {
@@ -5472,7 +5492,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:21:43+00:00"
+            "time": "2025-07-15T09:40:20+00:00"
         },
         {
             "name": "symfony/dom-crawler",
@@ -5480,12 +5500,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "64c0b19513ff951b97ab14a2c39140cbd2f085e6"
+                "reference": "e08bce37a30e68aea10eac6bc8f05dadb6c8c90c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/64c0b19513ff951b97ab14a2c39140cbd2f085e6",
-                "reference": "64c0b19513ff951b97ab14a2c39140cbd2f085e6",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/e08bce37a30e68aea10eac6bc8f05dadb6c8c90c",
+                "reference": "e08bce37a30e68aea10eac6bc8f05dadb6c8c90c",
                 "shasum": ""
             },
             "require": {
@@ -5539,7 +5559,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-15T10:08:16+00:00"
+            "time": "2025-07-15T09:40:20+00:00"
         },
         {
             "name": "symfony/finder",
@@ -5547,12 +5567,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "4bb12c568bd5a45e2caa4bc4a0a31087ae7a864c"
+                "reference": "d2fc80c7648e13795e5967afd8966920fa22f04d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/4bb12c568bd5a45e2caa4bc4a0a31087ae7a864c",
-                "reference": "4bb12c568bd5a45e2caa4bc4a0a31087ae7a864c",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/d2fc80c7648e13795e5967afd8966920fa22f04d",
+                "reference": "d2fc80c7648e13795e5967afd8966920fa22f04d",
                 "shasum": ""
             },
             "require": {
@@ -5603,7 +5623,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-02T14:13:49+00:00"
+            "time": "2025-07-16T09:26:03+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -5770,12 +5790,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "7ea0c86d7555d888ba1911a4bcbbb25d575756a7"
+                "reference": "89ecb57ea26d588329e0ac38a7bbd652afce90bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/7ea0c86d7555d888ba1911a4bcbbb25d575756a7",
-                "reference": "7ea0c86d7555d888ba1911a4bcbbb25d575756a7",
+                "url": "https://api.github.com/repos/symfony/string/zipball/89ecb57ea26d588329e0ac38a7bbd652afce90bd",
+                "reference": "89ecb57ea26d588329e0ac38a7bbd652afce90bd",
                 "shasum": ""
             },
             "require": {
@@ -5849,7 +5869,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-08T09:31:55+00:00"
+            "time": "2025-07-15T09:40:20+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -5857,12 +5877,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "90ff8345b0e50508d7ef84c5734e0c51d056b4e6"
+                "reference": "03f84c8fb4c09416bb4f892f67aff7f98ff98f65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/90ff8345b0e50508d7ef84c5734e0c51d056b4e6",
-                "reference": "90ff8345b0e50508d7ef84c5734e0c51d056b4e6",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/03f84c8fb4c09416bb4f892f67aff7f98ff98f65",
+                "reference": "03f84c8fb4c09416bb4f892f67aff7f98ff98f65",
                 "shasum": ""
             },
             "require": {
@@ -5874,7 +5894,6 @@
                 "symfony/console": "<6.4"
             },
             "require-dev": {
-                "ext-iconv": "*",
                 "symfony/console": "^6.4|^7.0|^8.0",
                 "symfony/http-kernel": "^6.4|^7.0|^8.0",
                 "symfony/process": "^6.4|^7.0|^8.0",
@@ -5933,7 +5952,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-08T09:31:55+00:00"
+            "time": "2025-07-18T07:58:00+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -5941,12 +5960,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "2dce389812df04fac08a1dd2769ed8dffb36debd"
+                "reference": "1489d1b10e9800d3bd819b527023d96c719f3fc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/2dce389812df04fac08a1dd2769ed8dffb36debd",
-                "reference": "2dce389812df04fac08a1dd2769ed8dffb36debd",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1489d1b10e9800d3bd819b527023d96c719f3fc8",
+                "reference": "1489d1b10e9800d3bd819b527023d96c719f3fc8",
                 "shasum": ""
             },
             "require": {
@@ -6005,7 +6024,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-08T09:31:55+00:00"
+            "time": "2025-07-15T09:40:20+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -6323,7 +6342,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "kartik-v/yii2-widget-fileinput": 20
+        "kartik-v/yii2-widget-fileinput": 20,
+        "kartik-v/yii2-widget-select2": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
