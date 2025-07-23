@@ -14,44 +14,44 @@ $this->title = 'Data Staf';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
-    </div>
-    <div class="card-body">
-        <p>
-            <?= Html::a('Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
-        </p>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
+        </div>
+        <div class="card-body">
+            <p>
+                <?= Html::a('Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
 
-        <?php Pjax::begin(); ?>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <?php Pjax::begin(); ?>
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-        <?= GridView::widget([
-            'dataProvider' => $dataProvider,
-            // 'filterModel' => $searchModel,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
-                // 'id',
-                'username',
-                'nama',
-                'email:email',
-                // 'email_verified_at:email',
-                //'password',
-                //'role',
-                //'auth_key',
-                //'created_at',
-                //'updated_at',
-                [
-                    'class' => ActionColumn::className(),
-                    'urlCreator' => function ($action, User $model, $key, $index, $column) {
-                        return Url::toRoute([$action, 'id' => $model->id]);
-                    }
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                // 'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    // 'id',
+                    'username',
+                    'nama',
+                    'email:email',
+                    // 'email_verified_at:email',
+                    //'password',
+                    //'role',
+                    //'auth_key',
+                    //'created_at',
+                    //'updated_at',
+                    [
+                        'class' => ActionColumn::className(),
+                        'urlCreator' => function ($action, User $model, $key, $index, $column) {
+                            return Url::toRoute([$action, 'id' => $model->id]);
+                        }
+                    ],
                 ],
-            ],
-        ]); ?>
+            ]); ?>
 
-        <?php Pjax::end(); ?>
+            <?php Pjax::end(); ?>
+        </div>
     </div>
-</div>
 
 </div>

@@ -38,13 +38,23 @@
             if ($userRole == 'siswa' || $userRole == 'calon_siswa' ) {
                 $menuItems = [
                     ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/siswa']],
-                    ['label' => 'Tagihan', 'icon' => 'file-invoice-dollar', 'url' => ['']],
-                    // For 'staf' role, maybe limit menu items or customize here
+                    [
+                        'label' => 'Tagihan', 
+                        'icon' => 'file-invoice-dollar', 
+                        'url' => ['tagihan/index'],
+                        'active' => Yii::$app->controller->id === 'tagihan',
+                    ],
+                        
                 ];
             } else {
                 $menuItems = [
                     ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/index']],
-                    ['label' => 'Tagihan', 'icon' => 'file-invoice-dollar', 'url' => ['']],
+                    [
+                        'label' => 'Tagihan', 
+                        'icon' => 'file-invoice-dollar', 
+                        'url' => ['tagihan/index'],
+                        'active' => Yii::$app->controller->id === 'tagihan',
+                    ],
                     [
                         'label' => 'Master Data',
                         'icon' => 'database',

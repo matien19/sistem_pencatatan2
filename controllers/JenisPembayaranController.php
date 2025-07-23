@@ -2,11 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\JenisJurusanModel;
 use app\models\JenisPembayaranModel;
 use app\models\KelasModel;
 use app\models\SearchJenisPembayaranModel;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -28,6 +28,18 @@ class JenisPembayaranController extends Controller
                     'class' => VerbFilter::className(),
                     'actions' => [
                         'delete' => ['POST'],
+                    ],
+                ],
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@'],
+                            'matchCallback' => function ($rule, $action) {
+                            return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role === 'staf';
+                            },
+                        ],
                     ],
                 ],
             ]

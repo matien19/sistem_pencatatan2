@@ -989,3 +989,78 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1753237143.5939
     'REQUEST_TIME' => 1753237143
 ]
+2025-07-23 06:13:22 [::1][1][io561jqn7110ube9kt244l69id][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined variable $dataProvider in C:\laragon\www\tagihan\views\tagihan\index.php:42
+Stack trace:
+#0 C:\laragon\www\tagihan\views\tagihan\index.php(42): yii\base\ErrorHandler->handleError(2, 'Undefined varia...', 'C:\\laragon\\www\\...', 42)
+#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
+#2 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
+#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\TagihanController))
+#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('index', Array, Object(app\controllers\TagihanController))
+#5 C:\laragon\www\tagihan\controllers\TagihanController.php(69): yii\base\Controller->render('index', Array)
+#6 [internal function]: app\controllers\TagihanController->actionIndex()
+#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
+#8 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
+#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('index', Array)
+#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('tagihan/index', Array)
+#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
+#13 {main}
+2025-07-23 06:13:21 [::1][1][io561jqn7110ube9kt244l69id][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
+    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
+    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
+    'sidebar-collapse' => 'false'
+    'PHPSESSID' => 'io561jqn7110ube9kt244l69id'
+    '_csrf' => 'f158b4ce288f5f6a941bf751723bf5961ddb0e2c8f89ead548445fd135f00a6da:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"MA-rNJB_FXmU9yfolkveMo5IY5hzP32Q\";}'
+]
+
+$_SESSION = [
+    '__flash' => [
+        'success' => -1
+    ]
+    '__returnUrl' => 'http://localhost:8080/'
+    '__id' => 1
+    '__authKey' => null
+    'success' => 'Jenis pembayaran berhasil diperbarui.'
+]
+
+$_SERVER = [
+    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
+    'REMOTE_ADDR' => '::1'
+    'REMOTE_PORT' => '50492'
+    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_PORT' => '8080'
+    'REQUEST_URI' => '/tagihan/index'
+    'REQUEST_METHOD' => 'GET'
+    'SCRIPT_NAME' => '/index.php'
+    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
+    'PATH_INFO' => '/tagihan/index'
+    'PHP_SELF' => '/index.php/tagihan/index'
+    'HTTP_HOST' => 'localhost:8080'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost:8080/beranda/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
+    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; sidebar-collapse=false; PHPSESSID=io561jqn7110ube9kt244l69id; _csrf=f158b4ce288f5f6a941bf751723bf5961ddb0e2c8f89ead548445fd135f00a6da%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MA-rNJB_FXmU9yfolkveMo5IY5hzP32Q%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1753251201.8491
+    'REQUEST_TIME' => 1753251201
+]
