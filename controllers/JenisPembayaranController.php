@@ -129,12 +129,12 @@ class JenisPembayaranController extends Controller
                 if (!empty($kelas)) {
                     $jenis->kelas = json_encode($kelas); // atau implode(',', $kelas);
                 } else {
-                    $jenis->kelas = '-'; // atau implode(',', $kelas);
+                    $jenis->kelas = '["-"]'; // atau implode(',', $kelas);
                 }
                 if (!empty($jurusan)) {
                     $jenis->jurusan_id = json_encode($jurusan); // atau implode(',', $jurusan);
                 } else {
-                    $jenis->jurusan_id = '-'; // atau implode(',', $jurusan);
+                    $jenis->jurusan_id = '["-"]'; // atau implode(',', $jurusan);
                 }
 
                 if ($jenis->save()) { // false = skip validasi, bisa diganti true jika validasi diperlukan

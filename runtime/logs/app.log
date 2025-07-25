@@ -1,869 +1,4 @@
-2025-07-22 12:04:29 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You must install 'yiisoft/yii2-bootstrap' extension for Bootstrap 3.x version support. Dependency to 'yii2-bootstrap' has not been included with 'yii2-krajee-base'. To resolve, you must add 'yiisoft/yii2-bootstrap' to the 'require' section of your application's composer.json file and then run 'composer update'.
-
-NOTE: This dependency change has been done since v2.0 of 'yii2-krajee-base' because only one of 'yiisoft/yii2-bootstrap' OR 'yiisoft/yii2-bootstrap4' OR 'yiisoft/yii2-bootstrap5' extensions can be installed. The developer can thus choose and control which bootstrap extension library to install. in C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\BootstrapTrait.php:235
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\InputWidget.php(107): kartik\base\InputWidget->initBsVersion()
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): kartik\base\InputWidget->init()
-#2 [internal function]: yii\base\BaseObject->__construct(Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('kartik\\select2\\...', Array, Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('kartik\\select2\\...', Array, Array)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php(797): yii\base\Widget::widget(Array)
-#8 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(71): yii\widgets\ActiveField->widget('kartik\\select2\\...', Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#12 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#17 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#18 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#24 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#25 {main}
-2025-07-22 12:04:29 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62023'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753185869.2727
-    'REQUEST_TIME' => 1753185869
-]
-2025-07-22 12:04:31 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You must install 'yiisoft/yii2-bootstrap' extension for Bootstrap 3.x version support. Dependency to 'yii2-bootstrap' has not been included with 'yii2-krajee-base'. To resolve, you must add 'yiisoft/yii2-bootstrap' to the 'require' section of your application's composer.json file and then run 'composer update'.
-
-NOTE: This dependency change has been done since v2.0 of 'yii2-krajee-base' because only one of 'yiisoft/yii2-bootstrap' OR 'yiisoft/yii2-bootstrap4' OR 'yiisoft/yii2-bootstrap5' extensions can be installed. The developer can thus choose and control which bootstrap extension library to install. in C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\BootstrapTrait.php:235
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\InputWidget.php(107): kartik\base\InputWidget->initBsVersion()
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): kartik\base\InputWidget->init()
-#2 [internal function]: yii\base\BaseObject->__construct(Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('kartik\\select2\\...', Array, Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('kartik\\select2\\...', Array, Array)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php(797): yii\base\Widget::widget(Array)
-#8 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(71): yii\widgets\ActiveField->widget('kartik\\select2\\...', Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#12 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#17 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#18 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#24 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#25 {main}
-2025-07-22 12:04:31 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62027'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753185871.2198
-    'REQUEST_TIME' => 1753185871
-]
-2025-07-22 12:04:55 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You must install 'yiisoft/yii2-bootstrap' extension for Bootstrap 3.x version support. Dependency to 'yii2-bootstrap' has not been included with 'yii2-krajee-base'. To resolve, you must add 'yiisoft/yii2-bootstrap' to the 'require' section of your application's composer.json file and then run 'composer update'.
-
-NOTE: This dependency change has been done since v2.0 of 'yii2-krajee-base' because only one of 'yiisoft/yii2-bootstrap' OR 'yiisoft/yii2-bootstrap4' OR 'yiisoft/yii2-bootstrap5' extensions can be installed. The developer can thus choose and control which bootstrap extension library to install. in C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\BootstrapTrait.php:235
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\InputWidget.php(107): kartik\base\InputWidget->initBsVersion()
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): kartik\base\InputWidget->init()
-#2 [internal function]: yii\base\BaseObject->__construct(Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('kartik\\select2\\...', Array, Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('kartik\\select2\\...', Array, Array)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php(797): yii\base\Widget::widget(Array)
-#8 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(71): yii\widgets\ActiveField->widget('kartik\\select2\\...', Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#12 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#17 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#18 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#24 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#25 {main}
-2025-07-22 12:04:55 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62064'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_PRAGMA' => 'no-cache'
-    'HTTP_CACHE_CONTROL' => 'no-cache'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753185895.6739
-    'REQUEST_TIME' => 1753185895
-]
-2025-07-22 12:04:58 [::1][1][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You must install 'yiisoft/yii2-bootstrap' extension for Bootstrap 3.x version support. Dependency to 'yii2-bootstrap' has not been included with 'yii2-krajee-base'. To resolve, you must add 'yiisoft/yii2-bootstrap' to the 'require' section of your application's composer.json file and then run 'composer update'.
-
-NOTE: This dependency change has been done since v2.0 of 'yii2-krajee-base' because only one of 'yiisoft/yii2-bootstrap' OR 'yiisoft/yii2-bootstrap4' OR 'yiisoft/yii2-bootstrap5' extensions can be installed. The developer can thus choose and control which bootstrap extension library to install. in C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\BootstrapTrait.php:235
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\InputWidget.php(107): kartik\base\InputWidget->initBsVersion()
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): kartik\base\InputWidget->init()
-#2 [internal function]: yii\base\BaseObject->__construct(Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('kartik\\select2\\...', Array, Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('kartik\\select2\\...', Array, Array)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php(797): yii\base\Widget::widget(Array)
-#8 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(71): yii\widgets\ActiveField->widget('kartik\\select2\\...', Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#12 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#17 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#18 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#24 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#25 {main}
-2025-07-22 12:04:58 [::1][1][-][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62069'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_PRAGMA' => 'no-cache'
-    'HTTP_CACHE_CONTROL' => 'no-cache'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753185898.6703
-    'REQUEST_TIME' => 1753185898
-]
-2025-07-22 12:04:59 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You must install 'yiisoft/yii2-bootstrap' extension for Bootstrap 3.x version support. Dependency to 'yii2-bootstrap' has not been included with 'yii2-krajee-base'. To resolve, you must add 'yiisoft/yii2-bootstrap' to the 'require' section of your application's composer.json file and then run 'composer update'.
-
-NOTE: This dependency change has been done since v2.0 of 'yii2-krajee-base' because only one of 'yiisoft/yii2-bootstrap' OR 'yiisoft/yii2-bootstrap4' OR 'yiisoft/yii2-bootstrap5' extensions can be installed. The developer can thus choose and control which bootstrap extension library to install. in C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\BootstrapTrait.php:235
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\InputWidget.php(107): kartik\base\InputWidget->initBsVersion()
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): kartik\base\InputWidget->init()
-#2 [internal function]: yii\base\BaseObject->__construct(Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('kartik\\select2\\...', Array, Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('kartik\\select2\\...', Array, Array)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php(797): yii\base\Widget::widget(Array)
-#8 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(71): yii\widgets\ActiveField->widget('kartik\\select2\\...', Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#12 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#17 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#18 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#24 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#25 {main}
-2025-07-22 12:04:59 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62070'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_PRAGMA' => 'no-cache'
-    'HTTP_CACHE_CONTROL' => 'no-cache'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753185899.0175
-    'REQUEST_TIME' => 1753185899
-]
-2025-07-22 12:06:18 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You must install 'yiisoft/yii2-bootstrap' extension for Bootstrap 3.x version support. Dependency to 'yii2-bootstrap' has not been included with 'yii2-krajee-base'. To resolve, you must add 'yiisoft/yii2-bootstrap' to the 'require' section of your application's composer.json file and then run 'composer update'.
-
-NOTE: This dependency change has been done since v2.0 of 'yii2-krajee-base' because only one of 'yiisoft/yii2-bootstrap' OR 'yiisoft/yii2-bootstrap4' OR 'yiisoft/yii2-bootstrap5' extensions can be installed. The developer can thus choose and control which bootstrap extension library to install. in C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\BootstrapTrait.php:235
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\kartik-v\yii2-krajee-base\src\InputWidget.php(107): kartik\base\InputWidget->initBsVersion()
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): kartik\base\InputWidget->init()
-#2 [internal function]: yii\base\BaseObject->__construct(Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('kartik\\select2\\...', Array, Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('kartik\\select2\\...', Array, Array)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php(797): yii\base\Widget::widget(Array)
-#8 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(71): yii\widgets\ActiveField->widget('kartik\\select2\\...', Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#12 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#17 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#18 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#24 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#25 {main}
-2025-07-22 12:06:16 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62103'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753185976.9141
-    'REQUEST_TIME' => 1753185976
-]
-2025-07-22 13:00:23 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][Error] Error: Class "Select2" not found in C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\ActiveField.php:797
-Stack trace:
-#0 C:\laragon\www\tagihan\views\jenis-pembayaran\_form.php(68): yii\widgets\ActiveField->widget('Select2', Array)
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#2 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, NULL)
-#4 C:\laragon\www\tagihan\views\jenis-pembayaran\create.php(16): yii\base\View->render('_form', Array)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#8 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('create', Array, Object(app\controllers\JenisPembayaranController))
-#9 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(80): yii\base\Controller->render('create', Array)
-#10 [internal function]: app\controllers\JenisPembayaranController->actionCreate()
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#12 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#16 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#17 {main}
-2025-07-22 13:00:17 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => []
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '63740'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/create'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/create'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/create'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753189217.9014
-    'REQUEST_TIME' => 1753189217
-]
-2025-07-22 19:02:47 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: app\models\JenisPembayaranModel::jurusan in C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Component.php:154
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\yiisoft\yii2\db\BaseActiveRecord.php(296): yii\base\Component->__get('jurusan')
-#1 C:\laragon\www\tagihan\views\jenis-pembayaran\index.php(62): yii\db\BaseActiveRecord->__get('jurusan')
-#2 [internal function]: yii\base\View->{closure}(Object(app\models\JenisPembayaranModel), 1, 0, Object(yii\grid\DataColumn))
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\DataColumn.php(252): call_user_func(Object(Closure), Object(app\models\JenisPembayaranModel), 1, 0, Object(yii\grid\DataColumn))
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\DataColumn.php(266): yii\grid\DataColumn->getDataCellValue(Object(app\models\JenisPembayaranModel), 1, 0)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\Column.php(111): yii\grid\DataColumn->renderDataCellContent(Object(app\models\JenisPembayaranModel), 1, 0)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(525): yii\grid\Column->renderDataCell(Object(app\models\JenisPembayaranModel), 1, 0)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(494): yii\grid\GridView->renderTableRow(Object(app\models\JenisPembayaranModel), 1, 0)
-#8 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(358): yii\grid\GridView->renderTableBody()
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\BaseListView.php(160): yii\grid\GridView->renderItems()
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(326): yii\widgets\BaseListView->renderSection('{items}')
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\BaseListView.php(135): yii\grid\GridView->renderSection('{items}')
-#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\BaseListView.php(134): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(301): yii\widgets\BaseListView->run()
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(149): yii\grid\GridView->run()
-#16 C:\laragon\www\tagihan\views\jenis-pembayaran\index.php(29): yii\base\Widget::widget(Array)
-#17 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#18 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('index', Array, Object(app\controllers\JenisPembayaranController))
-#21 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(65): yii\base\Controller->render('index', Array)
-#22 [internal function]: app\controllers\JenisPembayaranController->actionIndex()
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#24 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#25 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('index', Array)
-#26 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#27 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#28 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#29 {main}
-2025-07-22 19:02:46 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => [
-        'error' => -1
-    ]
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-    'error' => 'Data tidak valid. Silakan periksa kembali.'
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '56280'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/index'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/index'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/index'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/staf/index'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753210966.1206
-    'REQUEST_TIME' => 1753210966
-]
-2025-07-22 19:28:27 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\ErrorException:8192] yii\base\ErrorException: json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in C:\laragon\www\tagihan\views\jenis-pembayaran\index.php:70
-Stack trace:
-#0 [internal function]: yii\base\ErrorHandler->handleError(8192, 'json_decode(): ...', 'C:\\laragon\\www\\...', 70)
-#1 C:\laragon\www\tagihan\views\jenis-pembayaran\index.php(70): json_decode(NULL, true)
-#2 [internal function]: yii\base\View->{closure}(Object(app\models\JenisPembayaranModel), 2, 1, Object(yii\grid\DataColumn))
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\DataColumn.php(252): call_user_func(Object(Closure), Object(app\models\JenisPembayaranModel), 2, 1, Object(yii\grid\DataColumn))
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\DataColumn.php(266): yii\grid\DataColumn->getDataCellValue(Object(app\models\JenisPembayaranModel), 2, 1)
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\Column.php(111): yii\grid\DataColumn->renderDataCellContent(Object(app\models\JenisPembayaranModel), 2, 1)
-#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(525): yii\grid\Column->renderDataCell(Object(app\models\JenisPembayaranModel), 2, 1)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(494): yii\grid\GridView->renderTableRow(Object(app\models\JenisPembayaranModel), 2, 1)
-#8 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(358): yii\grid\GridView->renderTableBody()
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\BaseListView.php(160): yii\grid\GridView->renderItems()
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(326): yii\widgets\BaseListView->renderSection('{items}')
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\BaseListView.php(135): yii\grid\GridView->renderSection('{items}')
-#12 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\BaseListView.php(134): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\grid\GridView.php(301): yii\widgets\BaseListView->run()
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(149): yii\grid\GridView->run()
-#16 C:\laragon\www\tagihan\views\jenis-pembayaran\index.php(29): yii\base\Widget::widget(Array)
-#17 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#18 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('index', Array, Object(app\controllers\JenisPembayaranController))
-#21 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(65): yii\base\Controller->render('index', Array)
-#22 [internal function]: app\controllers\JenisPembayaranController->actionIndex()
-#23 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#24 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#25 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('index', Array)
-#26 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#27 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#28 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#29 {main}
-2025-07-22 19:28:27 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = []
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => [
-        'error' => -1
-    ]
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-    'error' => 'Data tidak valid. Silakan periksa kembali.'
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '58309'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/index'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/index'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/index'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/create'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753212507.3763
-    'REQUEST_TIME' => 1753212507
-]
-2025-07-22 19:32:57 [::1][1][2hclb1vaeebfn04m085q9h7o3f][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Getting unknown property: app\models\JenisPembayaranModel::jurusan in C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Component.php:154
-Stack trace:
-#0 C:\laragon\www\tagihan\vendor\yiisoft\yii2\db\BaseActiveRecord.php(296): yii\base\Component->__get('jurusan')
-#1 C:\laragon\www\tagihan\views\jenis-pembayaran\view.php(39): yii\db\BaseActiveRecord->__get('jurusan')
-#2 [internal function]: yii\base\View->{closure}(Object(app\models\JenisPembayaranModel), Object(yii\widgets\DetailView))
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\DetailView.php(245): call_user_func(Object(Closure), Object(app\models\JenisPembayaranModel), Object(yii\widgets\DetailView))
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\widgets\DetailView.php(143): yii\widgets\DetailView->normalizeAttributes()
-#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\BaseObject.php(112): yii\widgets\DetailView->init()
-#6 [internal function]: yii\base\BaseObject->__construct(Array)
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(425): ReflectionClass->newInstanceArgs(Array)
-#8 C:\laragon\www\tagihan\vendor\yiisoft\yii2\di\Container.php(176): yii\di\Container->build('yii\\widgets\\Det...', Array, Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\BaseYii.php(374): yii\di\Container->get('yii\\widgets\\Det...', Array, Array)
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Widget.php(146): yii\BaseYii::createObject(Array)
-#11 C:\laragon\www\tagihan\views\jenis-pembayaran\view.php(29): yii\base\Widget::widget(Array)
-#12 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#13 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#14 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\JenisPembayaranController))
-#15 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('view', Array, Object(app\controllers\JenisPembayaranController))
-#16 C:\laragon\www\tagihan\controllers\JenisPembayaranController.php(79): yii\base\Controller->render('view', Array)
-#17 [internal function]: app\controllers\JenisPembayaranController->actionView('4')
-#18 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#19 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#20 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('view', Array)
-#21 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('jenis-pembayara...', Array)
-#22 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#23 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#24 {main}
-2025-07-22 19:32:56 [::1][1][2hclb1vaeebfn04m085q9h7o3f][info][application] $_GET = [
-    'id' => '4'
-]
-
-$_POST = []
-
-$_FILES = []
-
-$_COOKIE = [
-    'username-localhost-8888' => '\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"'
-    '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
-    'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
-    'PHPSESSID' => '2hclb1vaeebfn04m085q9h7o3f'
-    '_csrf' => '1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N\";}'
-    'sidebar-collapse' => 'false'
-]
-
-$_SESSION = [
-    '__flash' => [
-        'error' => -1
-        'success' => -1
-    ]
-    '__returnUrl' => 'http://localhost:8080/'
-    '__id' => 1
-    '__authKey' => null
-    'error' => 'Data tidak valid. Silakan periksa kembali.'
-    'success' => 'Jenis pembayaran berhasil dibuat.'
-]
-
-$_SERVER = [
-    'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
-    'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '58818'
-    'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
-    'SERVER_PROTOCOL' => 'HTTP/1.1'
-    'SERVER_NAME' => 'localhost'
-    'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/jenis-pembayaran/view?id=4'
-    'REQUEST_METHOD' => 'GET'
-    'SCRIPT_NAME' => '/index.php'
-    'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/jenis-pembayaran/view'
-    'PHP_SELF' => '/index.php/jenis-pembayaran/view'
-    'QUERY_STRING' => 'id=4'
-    'HTTP_HOST' => 'localhost:8080'
-    'HTTP_CONNECTION' => 'keep-alive'
-    'HTTP_CACHE_CONTROL' => 'max-age=0'
-    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
-    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
-    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
-    'HTTP_SEC_FETCH_SITE' => 'same-origin'
-    'HTTP_SEC_FETCH_MODE' => 'navigate'
-    'HTTP_SEC_FETCH_USER' => '?1'
-    'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
-    'HTTP_SEC_CH_UA_MOBILE' => '?0'
-    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
-    'HTTP_REFERER' => 'http://localhost:8080/jenis-pembayaran/create'
-    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
-    'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; PHPSESSID=2hclb1vaeebfn04m085q9h7o3f; _csrf=1d40368326833ded64b5dbdf332db52953f5ba041a821ac035df4fde3a253825a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Ly5fnBXSyIV-kxiFeup-Vb_2hx5kuq5N%22%3B%7D; sidebar-collapse=false'
-    'REQUEST_TIME_FLOAT' => 1753212776.7698
-    'REQUEST_TIME' => 1753212776
-]
-2025-07-23 02:19:08 [::1][-][mm1612n3vh7t6m5vi60br74pu4][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\laragon\www\tagihan\vendor\yiisoft\yii2\db\Connection.php:722
+2025-07-25 01:26:28 [::1][-][bq64imkvm8789lm71pn5kpsbig][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it in C:\laragon\www\tagihan\vendor\yiisoft\yii2\db\Connection.php:722
 Stack trace:
 #0 C:\laragon\www\tagihan\vendor\yiisoft\yii2\db\Connection.php(722): PDO->__construct('mysql:host=loca...', 'root', Object(SensitiveParameterValue), NULL)
 #1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\db\Connection.php(637): yii\db\Connection->createPdoInstance()
@@ -924,10 +59,10 @@ Array
     [2] => No connection could be made because the target machine actively refused it
 )
 
-2025-07-23 02:19:03 [::1][-][mm1612n3vh7t6m5vi60br74pu4][info][application] $_GET = []
+2025-07-25 01:26:24 [::1][-][bq64imkvm8789lm71pn5kpsbig][info][application] $_GET = []
 
 $_POST = [
-    '_csrf' => '_9bSJxUF3c0dzQsNjedo1v3xWwpVQ7SNu0IutzG7HQW55ZN1XDe_g2z0X2fBkVi6z8Q6MgEs_c-DN2WECPV1Ug=='
+    '_csrf' => 'JfRnI1D3N-3quD-puBCsMsNYON9HY0584JIHZD6VfR9mk1BMNrp6nYDJTcGNfp5ZsQhJ7gkFKSuU3mIcWtk0WQ=='
     'LoginForm' => [
         'username' => 'staf'
         'password' => '2'
@@ -941,8 +76,8 @@ $_COOKIE = [
     '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
     'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
     'sidebar-collapse' => 'false'
-    'PHPSESSID' => 'mm1612n3vh7t6m5vi60br74pu4'
-    '_csrf' => '8738467d0af642605d69a4dc308479d4a99259fa534716866ab520176b757094a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"F3ARI2bNq9TjLv0l25a8ToIB8uK39NhW\";}'
+    'PHPSESSID' => 'bq64imkvm8789lm71pn5kpsbig'
+    '_csrf' => 'ceb1cca10fed83ada94a75d1b8cf6eac59acd81c129814edfc8de657cc4ec204a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Cg7ofMMpjqrh5n2krPq1NfgWtLexdLIF\";}'
 ]
 
 $_SESSION = [
@@ -953,7 +88,7 @@ $_SESSION = [
 $_SERVER = [
     'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
     'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '62102'
+    'REMOTE_PORT' => '51331'
     'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'SERVER_NAME' => 'localhost'
@@ -985,29 +120,30 @@ $_SERVER = [
     'HTTP_REFERER' => 'http://localhost:8080/site/login'
     'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
     'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; sidebar-collapse=false; PHPSESSID=mm1612n3vh7t6m5vi60br74pu4; _csrf=8738467d0af642605d69a4dc308479d4a99259fa534716866ab520176b757094a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22F3ARI2bNq9TjLv0l25a8ToIB8uK39NhW%22%3B%7D'
-    'REQUEST_TIME_FLOAT' => 1753237143.5939
-    'REQUEST_TIME' => 1753237143
+    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; sidebar-collapse=false; PHPSESSID=bq64imkvm8789lm71pn5kpsbig; _csrf=ceb1cca10fed83ada94a75d1b8cf6eac59acd81c129814edfc8de657cc4ec204a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Cg7ofMMpjqrh5n2krPq1NfgWtLexdLIF%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1753406784.1857
+    'REQUEST_TIME' => 1753406784
 ]
-2025-07-23 06:13:22 [::1][1][io561jqn7110ube9kt244l69id][error][yii\base\ErrorException:2] yii\base\ErrorException: Undefined variable $dataProvider in C:\laragon\www\tagihan\views\tagihan\index.php:42
+2025-07-25 01:28:18 [::1][1][p59vaolnmpf62htlo8v95684pp][error][TypeError] TypeError: in_array(): Argument #2 ($haystack) must be of type array, null given in C:\laragon\www\tagihan\controllers\TagihanController.php:145
 Stack trace:
-#0 C:\laragon\www\tagihan\views\tagihan\index.php(42): yii\base\ErrorHandler->handleError(2, 'Undefined varia...', 'C:\\laragon\\www\\...', 42)
-#1 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(348): require('C:\\laragon\\www\\...')
-#2 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\laragon\\www\\...', Array)
-#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\laragon\\www\\...', Array, Object(app\controllers\TagihanController))
-#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(437): yii\base\View->render('index', Array, Object(app\controllers\TagihanController))
-#5 C:\laragon\www\tagihan\controllers\TagihanController.php(69): yii\base\Controller->render('index', Array)
-#6 [internal function]: app\controllers\TagihanController->actionIndex()
-#7 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
-#8 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
-#9 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('index', Array)
-#10 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('tagihan/index', Array)
-#11 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
-#12 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
-#13 {main}
-2025-07-23 06:13:21 [::1][1][io561jqn7110ube9kt244l69id][info][application] $_GET = []
+#0 C:\laragon\www\tagihan\controllers\TagihanController.php(145): in_array('-', NULL)
+#1 [internal function]: app\controllers\TagihanController->actionCreate()
+#2 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\InlineAction.php(60): call_user_func_array(Array, Array)
+#3 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Controller.php(187): yii\base\InlineAction->runWithParams(Array)
+#4 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Module.php(555): yii\base\Controller->runAction('create', Array)
+#5 C:\laragon\www\tagihan\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('tagihan/create', Array)
+#6 C:\laragon\www\tagihan\vendor\yiisoft\yii2\base\Application.php(387): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\laragon\www\tagihan\web\index.php(12): yii\base\Application->run()
+#8 {main}
+2025-07-25 01:28:18 [::1][1][p59vaolnmpf62htlo8v95684pp][info][application] $_GET = []
 
-$_POST = []
+$_POST = [
+    '_csrf' => '3OdAvUJi9lE2Vn_UYfw-79qjixKHNVJaOCKH69eR2he3iBDELybGHgFjJZostVuhtOnUfO9bIh5yTvKYnePpXA=='
+    'TagihanModel' => [
+        'jenis_pembayaran_id' => '9'
+        'tanggal_jatuh_tempo' => '2025-07-26'
+    ]
+]
 
 $_FILES = []
 
@@ -1016,8 +152,8 @@ $_COOKIE = [
     '_xsrf' => '2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459'
     'Pycharm-68ce4264' => 'aee03937-5805-4783-929b-57170c294a78'
     'sidebar-collapse' => 'false'
-    'PHPSESSID' => 'io561jqn7110ube9kt244l69id'
-    '_csrf' => 'f158b4ce288f5f6a941bf751723bf5961ddb0e2c8f89ead548445fd135f00a6da:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"MA-rNJB_FXmU9yfolkveMo5IY5hzP32Q\";}'
+    'PHPSESSID' => 'p59vaolnmpf62htlo8v95684pp'
+    '_csrf' => 'f340490333aac7a51848a5dfca335fc6eb26e0b6b754473f0acae925f4d86ad1a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"koPymD0O75ZNMIeNnJ_nhnpDJlusJr3K\";}'
 ]
 
 $_SESSION = [
@@ -1027,29 +163,34 @@ $_SESSION = [
     '__returnUrl' => 'http://localhost:8080/'
     '__id' => 1
     '__authKey' => null
-    'success' => 'Jenis pembayaran berhasil diperbarui.'
+    'success' => 'Jenis pembayaran berhasil dibuat.'
 ]
 
 $_SERVER = [
     'DOCUMENT_ROOT' => 'C:\\laragon\\www\\tagihan\\web'
     'REMOTE_ADDR' => '::1'
-    'REMOTE_PORT' => '50492'
+    'REMOTE_PORT' => '51516'
     'SERVER_SOFTWARE' => 'PHP/8.3.14 (Development Server)'
     'SERVER_PROTOCOL' => 'HTTP/1.1'
     'SERVER_NAME' => 'localhost'
     'SERVER_PORT' => '8080'
-    'REQUEST_URI' => '/tagihan/index'
-    'REQUEST_METHOD' => 'GET'
+    'REQUEST_URI' => '/tagihan/create'
+    'REQUEST_METHOD' => 'POST'
     'SCRIPT_NAME' => '/index.php'
     'SCRIPT_FILENAME' => 'C:\\laragon\\www\\tagihan\\web\\index.php'
-    'PATH_INFO' => '/tagihan/index'
-    'PHP_SELF' => '/index.php/tagihan/index'
+    'PATH_INFO' => '/tagihan/create'
+    'PHP_SELF' => '/index.php/tagihan/create'
     'HTTP_HOST' => 'localhost:8080'
     'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '187'
+    'HTTP_CONTENT_LENGTH' => '187'
     'HTTP_CACHE_CONTROL' => 'max-age=0'
     'HTTP_SEC_CH_UA' => '\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"'
     'HTTP_SEC_CH_UA_MOBILE' => '?0'
     'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_ORIGIN' => 'http://localhost:8080'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_CONTENT_TYPE' => 'application/x-www-form-urlencoded'
     'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
     'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
     'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
@@ -1057,10 +198,10 @@ $_SERVER = [
     'HTTP_SEC_FETCH_MODE' => 'navigate'
     'HTTP_SEC_FETCH_USER' => '?1'
     'HTTP_SEC_FETCH_DEST' => 'document'
-    'HTTP_REFERER' => 'http://localhost:8080/beranda/index'
+    'HTTP_REFERER' => 'http://localhost:8080/tagihan/create'
     'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
     'HTTP_ACCEPT_LANGUAGE' => 'id,en-US;q=0.9,en;q=0.8'
-    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; sidebar-collapse=false; PHPSESSID=io561jqn7110ube9kt244l69id; _csrf=f158b4ce288f5f6a941bf751723bf5961ddb0e2c8f89ead548445fd135f00a6da%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MA-rNJB_FXmU9yfolkveMo5IY5hzP32Q%22%3B%7D'
-    'REQUEST_TIME_FLOAT' => 1753251201.8491
-    'REQUEST_TIME' => 1753251201
+    'HTTP_COOKIE' => 'username-localhost-8888=\"2|1:0|10:1751420458|23:username-localhost-8888|44:ZjU5MDFjOTk1ODYyNGUzZGE1YWRjZDQ3OTA5MDAwODk=|3996d13488c453092b9f5507a8e07547a8803636fc6c474c8009bada08ee213f\"; _xsrf=2|01822352|c050c9b2633c7d19ed1beade9bd27559|1751420459; Pycharm-68ce4264=aee03937-5805-4783-929b-57170c294a78; sidebar-collapse=false; PHPSESSID=p59vaolnmpf62htlo8v95684pp; _csrf=f340490333aac7a51848a5dfca335fc6eb26e0b6b754473f0acae925f4d86ad1a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22koPymD0O75ZNMIeNnJ_nhnpDJlusJr3K%22%3B%7D'
+    'REQUEST_TIME_FLOAT' => 1753406898.4083
+    'REQUEST_TIME' => 1753406898
 ]

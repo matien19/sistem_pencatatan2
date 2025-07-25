@@ -55,15 +55,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return $model->jenisPembayaran->nama_pembayaran ?? '-';
                                     },
                                 ],
-                                 [
-                                    'attribute' => 'jumlah_tagihan',
+                                [
+                                    'attribute' => 'total_tagihan',
                                     'label' => 'Jumlah Tagihan',
-                                    'format' => ['currency'],
+                                    'value' => function ($model) {
+                                        return 'Rp ' . number_format($model->total_tagihan, 0, ',', '.');
+                                    },
                                 ],
                                 [
                                     'attribute' => 'tanggal_jatuh_tempo',
                                     'label' => 'Tanggal Jatuh Tempo',
-                                    'format' => ['date', 'php:d-m-Y'],
+                                    'format' => ['date', 'php:d F Y'],
                                 ],
                                 [
                                     'attribute' => 'status',
@@ -75,17 +77,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return ['class' => $model->status ? 'text-success' : 'text-danger'];
                                     }
                                 ],
-                                [
-                                    'attribute' => 'bukti_bayar',
-                                    'label' => 'Bukti Bayar',
-                                    'format' => 'raw',
-                                    'value' => function ($model) {
-                                        if ($model->bukti_bayar) {
-                                            return Html::a('Lihat', ['/bukti/' . $model->bukti_bayar], ['target' => '_blank']);
-                                        }
-                                        return '-';
-                                    },
-                                ],
+                                // [
+                                //     'attribute' => 'bukti_bayar',
+                                //     'label' => 'Bukti Bayar',
+                                //     'format' => 'raw',
+                                //     'value' => function ($model) {
+                                //         if ($model->bukti_bayar) {
+                                //             return Html::a('Lihat', ['/bukti/' . $model->bukti_bayar], ['target' => '_blank']);
+                                //         }
+                                //         return '-';
+                                //     },
+                                // ],
                                 [
                                     'class' => ActionColumn::className(),
                                     'urlCreator' => function ($action, $model, $key, $index, $column) {
@@ -109,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'label' => 'Nama Siswa',
                                 'value' => function ($model) {
-                                    return $model->siswa->nama ?? '-';
+                                    return $model->calonSiswa->nama ?? '-';
                                 },
                             ],
                             [
@@ -118,15 +120,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return $model->jenisPembayaran->nama_pembayaran ?? '-';
                                 },
                             ],
-                                [
-                                'attribute' => 'jumlah_tagihan',
+                            [
+                                'attribute' => 'total_tagihan',
                                 'label' => 'Jumlah Tagihan',
-                                'format' => ['currency'],
+                                'value' => function ($model) {
+                                    return 'Rp ' . number_format($model->total_tagihan, 0, ',', '.');
+                                },
                             ],
                             [
                                 'attribute' => 'tanggal_jatuh_tempo',
                                 'label' => 'Tanggal Jatuh Tempo',
-                                'format' => ['date', 'php:d-m-Y'],
+                                'format' => ['date', 'php:d F Y'],
                             ],
                             [
                                 'attribute' => 'status',
@@ -138,17 +142,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return ['class' => $model->status ? 'text-success' : 'text-danger'];
                                 }
                             ],
-                            [
-                                'attribute' => 'bukti_bayar',
-                                'label' => 'Bukti Bayar',
-                                'format' => 'raw',
-                                'value' => function ($model) {
-                                    if ($model->bukti_bayar) {
-                                        return Html::a('Lihat', ['/bukti/' . $model->bukti_bayar], ['target' => '_blank']);
-                                    }
-                                    return '-';
-                                },
-                            ],
+                            // [
+                            //     'attribute' => 'bukti_bayar',
+                            //     'label' => 'Bukti Bayar',
+                            //     'format' => 'raw',
+                            //     'value' => function ($model) {
+                            //         if ($model->bukti_bayar) {
+                            //             return Html::a('Lihat', ['/bukti/' . $model->bukti_bayar], ['target' => '_blank']);
+                            //         }
+                            //         return '-';
+                            //     },
+                            // ],
                             [
                                 'class' => ActionColumn::className(),
                                 'urlCreator' => function ($action, $model, $key, $index, $column) {

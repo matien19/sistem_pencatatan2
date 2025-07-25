@@ -60,9 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                         'value' => function ($model) {
                             // Ambil daftar nama jurusan dari relasi
-                           $decoded = json_decode($model->jurusan_id, true);
+                            $decoded = json_decode($model->jurusan_id, true);
 
                             if (is_array($decoded)) {
+                                if (count($decoded) === 1 && $decoded[0] === '-') {
+                                    return '-';
+                                }
+                                
                                 $jurusanList = JurusanModel::find()
                                     ->where(['id' => $decoded])
                                     ->select('nama') // atau 'nama_jurusan', sesuaikan nama kolomnya

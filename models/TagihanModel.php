@@ -39,14 +39,19 @@ class TagihanModel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['siswa_id', 'calon_siswa_id', 'tanggal_jatuh_tempo', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['siswa_id', 'calon_siswa_id', 'tanggal_jatuh_tempo'], 'default', 'value' => null],
+            [['created_at', 'updated_at'], 'default', 'value' => function () {
+                return date('Y-m-d H:i:s');
+            }],
+            [['jenis_pembayaran_id'], 'integer'],
+            [['tanggal_jatuh_tempo'], 'date', 'format' => 'php:Y-m-d'],
             [['status'], 'default', 'value' => 0],
             [['siswa_id', 'calon_siswa_id', 'jenis_pembayaran_id', 'status'], 'integer'],
-            [['jenis_pembayaran_id'], 'required'],
-            [['tanggal_jatuh_tempo', 'created_at', 'updated_at'], 'safe'],
-            [['calon_siswa_id'], 'exist', 'skipOnError' => true, 'targetClass' => CalonSiswa::class, 'targetAttribute' => ['calon_siswa_id' => 'id']],
-            [['jenis_pembayaran_id'], 'exist', 'skipOnError' => true, 'targetClass' => JenisPembayaran::class, 'targetAttribute' => ['jenis_pembayaran_id' => 'id']],
-            [['siswa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Siswa::class, 'targetAttribute' => ['siswa_id' => 'id']],
+            [['jenis_pembayaran_id', 'tanggal_jatuh_tempo'], 'required'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['calon_siswa_id'], 'exist', 'skipOnError' => true, 'targetClass' => CalonSiswaModel::class, 'targetAttribute' => ['calon_siswa_id' => 'id']],
+            [['jenis_pembayaran_id'], 'exist', 'skipOnError' => true, 'targetClass' => JenisPembayaranModel::class, 'targetAttribute' => ['jenis_pembayaran_id' => 'id']],
+            [['siswa_id'], 'exist', 'skipOnError' => true, 'targetClass' => SiswaModel::class, 'targetAttribute' => ['siswa_id' => 'id']],
         ];
     }
 
@@ -57,9 +62,9 @@ class TagihanModel extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'siswa_id' => 'Siswa ID',
-            'calon_siswa_id' => 'Calon Siswa ID',
-            'jenis_pembayaran_id' => 'Jenis Pembayaran ID',
+            'siswa_id' => 'Siswa',
+            'calon_siswa_id' => 'Calon Siswa',
+            'jenis_pembayaran_id' => 'Jenis Pembayaran',
             'status' => 'Status',
             'tanggal_jatuh_tempo' => 'Tanggal Jatuh Tempo',
             'created_at' => 'Created At',
@@ -74,7 +79,7 @@ class TagihanModel extends \yii\db\ActiveRecord
      */
     public function getCalonSiswa()
     {
-        return $this->hasOne(CalonSiswa::class, ['id' => 'calon_siswa_id']);
+        return $this->hasOne(CalonSiswaModel::class, ['id' => 'calon_siswa_id']);
     }
 
     /**
@@ -84,7 +89,7 @@ class TagihanModel extends \yii\db\ActiveRecord
      */
     public function getJenisPembayaran()
     {
-        return $this->hasOne(JenisPembayaran::class, ['id' => 'jenis_pembayaran_id']);
+        return $this->hasOne(JenisPembayaranModel::class, ['id' => 'jenis_pembayaran_id']);
     }
 
     /**
@@ -92,10 +97,10 @@ class TagihanModel extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPembayarans()
-    {
-        return $this->hasMany(Pembayaran::class, ['tagihan_id' => 'id']);
-    }
+    // public function getPembayarans()
+    // {
+    //     return $this->hasMany(Pembayaran::class, ['tagihan_id' => 'id']);
+    // }
 
     /**
      * Gets query for [[Siswa]].
@@ -104,7 +109,7 @@ class TagihanModel extends \yii\db\ActiveRecord
      */
     public function getSiswa()
     {
-        return $this->hasOne(Siswa::class, ['id' => 'siswa_id']);
+        return $this->hasOne(SiswaModel::class, ['id' => 'siswa_id']);
     }
 
 }
