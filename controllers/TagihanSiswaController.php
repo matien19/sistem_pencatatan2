@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
 /**
  * TagihanController implements the CRUD actions for TagihanModel model.
  */
-class TagihanController extends Controller
+class TagihanSiswaController extends Controller
 {
     /**
      * @inheritDoc
@@ -41,7 +41,7 @@ class TagihanController extends Controller
                             'allow' => true,
                             'roles' => ['@'],
                             'matchCallback' => function ($rule, $action) {
-                            return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role === 'staf';
+                            return !\Yii::$app->user->isGuest && in_array(\Yii::$app->user->identity->role, ['siswa', 'calon_siswa']);
                             },
                         ],
                     ],
@@ -57,23 +57,23 @@ class TagihanController extends Controller
      */
     public function actionIndex()
     {
+        $userId = Yii::$app->user->id;
+        $siswa = SiswaModel::findOne(['user_id' => $userId]);
+        if (!$siswa) {
+            throw new NotFoundHttpException('Siswa not found.');
+        }
         $searchModel = new SearchTagihanModel();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $query = TagihanModel::find()->where(['siswa_id' => $siswa->id]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
         
-        $querySiswa = TagihanModel::find()->where(['not', ['siswa_id' => null]]);
-        $queryCalon = TagihanModel::find()->where(['not', ['calon_siswa_id' => null]]);
-
-        $dataProviderSiswa = new ActiveDataProvider([
-            'query' => $querySiswa,
-        ]);
-
-        $dataProviderCalonSiswa = new ActiveDataProvider([
-            'query' => $queryCalon,
-        ]);
-
         return $this->render('index', [
-            'dataProviderSiswa' => $dataProviderSiswa,
-            'dataProviderCalonSiswa' => $dataProviderCalonSiswa,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -120,8 +120,8 @@ class TagihanController extends Controller
 
                     $jurusanList = is_array($jenis->jurusan_id) ? $jenis->jurusan_id : json_decode($jenis->jurusan_id, true);
 
-                    if (in_array('-', $jurusanList)) {
-                        $calonList = CalonSiswaModel::find()->all();
+                    foreach ($jurusanList as $jurusan) {
+                    $calonList = CalonSiswaModel::find()->where(['jurusan_id' => $jurusan])->all();
                         foreach ($calonList as $calon) {
                             $model = new TagihanModel([
                                 'calon_siswa_id' => $calon->id,
@@ -132,20 +132,6 @@ class TagihanController extends Controller
                             ]);
                             $model->save();
                         }
-                    } else {
-                        foreach ($jurusanList as $jurusan) {
-                            $calonList = CalonSiswaModel::find()->where(['jurusan_id' => $jurusan])->all();
-                            foreach ($calonList as $calon) {
-                                $model = new TagihanModel([
-                                    'calon_siswa_id' => $calon->id,
-                                    'jenis_pembayaran_id' => $jenis->id,
-                                    'total_tagihan' => $jenis->nominal,
-                                    'status' => 0,
-                                    'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
-                                ]);
-                                $model->save();
-                            }
-                        }   
                     }
 
                 } elseif ($jenis->kepada === 'siswa') {
@@ -224,7 +210,7 @@ class TagihanController extends Controller
                     }
                 }
 
-                return $this->redirect(['index']);
+                // return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -243,52 +229,18 @@ class TagihanController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    // public function actionUpdate($id)
-    // {
-    //     $model = $this->findModel($id);
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
 
-    //     $jenisPembayaranList = ArrayHelper::map(JenisPembayaranModel::find()->all(),
-    //         'id',
-    //         function ($item) {
-    //             return "{$item->nama_pembayaran} | {$item->kepada} | Rp " . number_format($item->nominal, 0, ',', '.') .
-    //                 " | {$item->tahun_akademik} | {$item->semester}";
-    //         }
-    //     );
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
-    //     if ($this->request->isPost) {
-    //         $model->load($this->request->post());
-
-    //         $jenis = JenisPembayaranModel::findOne($model->jenis_pembayaran_id);
-    //             if (!$jenis) {
-    //                 // Yii::$app->session->setFlash('error', 'Jenis pembayaran tidak ditemukan.');
-    //                 return $this->redirect(['create']);
-    //             }
-    //         if ($jenis->kepada === 'calon_siswa') {
-    //             $calon = CalonSiswaModel::findOne($model->calon_siswa_id);
-    //             if (!$calon) {
-    //                 Yii::$app->session->setFlash('error', 'Calon siswa tidak ditemukan.');
-    //                 return $this->redirect(['index']);
-    //             }
-    //             $model->siswa_id = null; // Set siswa_id to null for calon siswa
-    //         } elseif ($jenis->kepada === 'siswa') {
-    //             $siswa = SiswaModel::findOne($model->siswa_id);
-    //             if (!$siswa) {
-    //                 Yii::$app->session->setFlash('error', 'Siswa tidak ditemukan.');
-    //                 return $this->redirect(['index']);
-    //             }
-    //             $model->calon_siswa_id = null; // Set calon_siswa_id to null for siswa
-    //         }
-
-    //         if ($model->save()) {
-    //             return $this->redirect(['view', 'id' => $model->id]);
-    //         }
-    //     }
-
-    //     return $this->render('update', [
-    //         'model' => $model,
-    //         'jenisPembayaranList' => $jenisPembayaranList,
-    //     ]);
-    // }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Deletes an existing TagihanModel model.

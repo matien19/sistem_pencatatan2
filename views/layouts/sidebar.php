@@ -41,8 +41,8 @@
                     [
                         'label' => 'Tagihan', 
                         'icon' => 'file-invoice-dollar', 
-                        'url' => ['tagihan/index'],
-                        'active' => Yii::$app->controller->id === 'tagihan',
+                        'url' => ['tagihan-siswa/index'],
+                        'active' => Yii::$app->controller->id === 'tagihan-siswa',
                     ],
                         
                 ];

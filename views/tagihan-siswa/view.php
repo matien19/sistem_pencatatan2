@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\TagihanModel $model */
 
-$this->title = $model->jenisPembayaran->nama_pembayaran;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Tagihan Models', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -28,20 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            // 'id',
-            [
-                'attribute' => 'siswa_id',
-                'value' => function ($model) {
-                    return $model->siswa->nama ?? $model->calonSiswa->nama ?? '-';
-                },
-            ],
-            [
-                'attribute' => 'jenis_pembayaran_id',
-                'value' => function ($model) {
-                    return $model->jenisPembayaran->nama_pembayaran ?? '-';
-                },
-            ],
-            'total_tagihan',
+            'id',
+            'siswa_id',
+            'calon_siswa_id',
+            'jenis_pembayaran_id',
             'status',
             'tanggal_jatuh_tempo',
             'created_at',

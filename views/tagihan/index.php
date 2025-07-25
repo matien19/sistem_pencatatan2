@@ -71,11 +71,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attribute' => 'status',
                                     'label' => 'Status Pembayaran',
                                     'value' => function ($model) {
-                                        return $model->status ? 'Lunas' : 'Belum Lunas';
+                                       if ($model->status == false) {
+                                            if (empty($model->pembayaran) || empty($model->pembayaran->tgl_bayar)) {
+                                                return 'Belum Dibayar';
+                                            } else {
+                                                return 'Sudah Bayar (Belum Diverifikasi)';
+                                            }
+                                        } else {
+                                            return 'Sudah Dibayar (Sudah Diverifikasi)';
+                                        }
                                     },
-                                    'contentOptions' => function ($model) {
-                                        return ['class' => $model->status ? 'text-success' : 'text-danger'];
-                                    }
                                 ],
                                 // [
                                 //     'attribute' => 'bukti_bayar',
@@ -90,9 +95,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 // ],
                                 [
                                     'class' => ActionColumn::className(),
+                                    'template' => '{view} {delete}', // hanya tampilkan view dan delete
                                     'urlCreator' => function ($action, $model, $key, $index, $column) {
                                         return Url::toRoute([$action, 'id' => $model->id]);
-                                    }
+                                    },
                                 ],
                             ],
                         ]); ?>
@@ -136,11 +142,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'status',
                                 'label' => 'Status Pembayaran',
                                 'value' => function ($model) {
-                                    return $model->status ? 'Lunas' : 'Belum Lunas';
+                                    if ($model->status == false) {
+                                        if (empty($model->pembayaran) || empty($model->pembayaran->tgl_bayar)) {
+                                            return 'Belum Dibayar';
+                                        } else {
+                                            return 'Sudah Bayar (Belum Diverifikasi)';
+                                        }
+                                    } else {
+                                        return 'Sudah Dibayar (Sudah Diverifikasi)';
+                                    }
                                 },
-                                'contentOptions' => function ($model) {
-                                    return ['class' => $model->status ? 'text-success' : 'text-danger'];
-                                }
                             ],
                             // [
                             //     'attribute' => 'bukti_bayar',
@@ -155,9 +166,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             // ],
                             [
                                 'class' => ActionColumn::className(),
+                                'template' => '{view} {delete}', // hanya tampilkan view dan delete
                                 'urlCreator' => function ($action, $model, $key, $index, $column) {
                                     return Url::toRoute([$action, 'id' => $model->id]);
-                                }
+                                },
                             ],
                         ],
                     ]); ?>

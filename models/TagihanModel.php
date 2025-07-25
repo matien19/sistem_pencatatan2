@@ -97,10 +97,10 @@ class TagihanModel extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    // public function getPembayarans()
-    // {
-    //     return $this->hasMany(Pembayaran::class, ['tagihan_id' => 'id']);
-    // }
+    public function getPembayarans()
+    {
+        return $this->hasMany(PembayaranModel::class, ['tagihan_id' => 'id']);
+    }
 
     /**
      * Gets query for [[Siswa]].
