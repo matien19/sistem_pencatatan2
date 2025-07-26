@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\CalonSiswaModel;
 use app\models\JenisPembayaranModel;
+use app\models\PembayaranModel;
 use app\models\TagihanModel;
 use app\models\SearchTagihanModel;
 use app\models\SiswaModel;
@@ -14,6 +15,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * TagihanController implements the CRUD actions for TagihanModel model.
@@ -85,9 +87,12 @@ class TagihanSiswaController extends Controller
      */
     public function actionView($id)
     {
-        
+        $model = $this->findModel($id);
+
+        $pembayaranBaru = new PembayaranModel();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'pembayaranBaru' => $pembayaranBaru,
         ]);
     }
 
@@ -98,128 +103,40 @@ class TagihanSiswaController extends Controller
      */
     public function actionCreate()
     {
-        $model = new TagihanModel();
-        $jenisPembayaranList = ArrayHelper::map(JenisPembayaranModel::find()->all(),
-            'id',
-            function ($item) {
-                return "{$item->nama_pembayaran} | {$item->kepada} | Rp " . number_format($item->nominal, 0, ',', '.') .
-                    " | {$item->tahun_akademik} | {$item->semester}";
-            }
-        );
+        $model = new PembayaranModel();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
+            // echo '<pre>';
+            // print_r($model->attributes);
+            // Tangkap file upload
+            $model->bukti_bayar = UploadedFile::getInstance($model, 'bukti_bayar');
 
-                $jenis = JenisPembayaranModel::findOne($model->jenis_pembayaran_id);
-                if (!$jenis) {
-                    // Yii::$app->session->setFlash('error', 'Jenis pembayaran tidak ditemukan.');
-                    return $this->redirect(['create']);
+            // Proses simpan file jika ada bukti
+            if ($model->bukti_bayar) {
+                $uploadPath = Yii::getAlias('@webroot/bukti/');
+
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0777, true); // buat folder jika belum ada
                 }
 
-                if ($jenis->kepada === 'calon_siswa') {
+                $filename = 'bukti_' . time() . '.' . $model->bukti_bayar->extension;
+                $path = $uploadPath . $filename;
 
-                    $jurusanList = is_array($jenis->jurusan_id) ? $jenis->jurusan_id : json_decode($jenis->jurusan_id, true);
-
-                    foreach ($jurusanList as $jurusan) {
-                    $calonList = CalonSiswaModel::find()->where(['jurusan_id' => $jurusan])->all();
-                        foreach ($calonList as $calon) {
-                            $model = new TagihanModel([
-                                'calon_siswa_id' => $calon->id,
-                                'jenis_pembayaran_id' => $jenis->id,
-                                'total_tagihan' => $jenis->nominal,
-                                'status' => 0,
-                                'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
-                            ]);
-                            $model->save();
-                        }
-                    }
-
-                } elseif ($jenis->kepada === 'siswa') {
-
-                    $jurusanList = is_array($jenis->jurusan_id) ? $jenis->jurusan_id : json_decode($jenis->jurusan_id, true);
-                    $kelasArray = is_array($jenis->kelas) ? $jenis->kelas : json_decode($jenis->kelas, true);
-
-                    $query = SiswaModel::find()->joinWith(['kelas.jurusan']);
-
-                    // Jika jurusan dan kelas == '-'
-                    if (in_array('-', $jurusanList) && in_array('-', $kelasArray)) {
-                        $siswaList = $query->all();
-                        foreach ($siswaList as $siswa) {
-                            $model = new TagihanModel([
-                                'siswa_id' => $siswa->id,
-                                'jenis_pembayaran_id' => $jenis->id,
-                                'total_tagihan' => $jenis->nominal,
-                                'status' => 0,
-                                'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
-                            ]);
-                            $model->save();
-                        }
-                    }
-
-                    // Jika jurusan == '-' → ambil berdasarkan kelas ID saja
-                    elseif (in_array('-', $jurusanList)) {
-                        foreach ($kelasArray as $kelas) {
-                            $siswaList = $query->where(['kelas.kelas' => $kelas])->all();
-                            foreach ($siswaList as $siswa) {
-                                $model = new TagihanModel([
-                                    'siswa_id' => $siswa->id,
-                                    'jenis_pembayaran_id' => $jenis->id,
-                                    'total_tagihan' => $jenis->nominal,
-                                    'status' => 0,
-                                    'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
-                                ]);
-                                $model->save();
-                            }
-                        }
-                    }
-
-                    // Jika kelas == '-' → ambil berdasarkan jurusan ID
-                    elseif (in_array('-', $kelasArray)) {
-                        foreach ($jurusanList as $jurusan) {
-                            $siswaList = $query->where(['kelas.jurusan_id' => $jurusan])->all();
-                            foreach ($siswaList as $siswa) {
-                                $model = new TagihanModel([
-                                    'siswa_id' => $siswa->id,
-                                    'jenis_pembayaran_id' => $jenis->id,
-                                    'total_tagihan' => $jenis->nominal,
-                                    'status' => 0,
-                                    'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
-                                ]);
-                                $model->save();
-                            }
-                        }
-                    }
-
-                    // Jika jurusan dan kelas keduanya spesifik
-                    else {
-                        foreach ($jurusanList as $jurusan) {
-                            foreach ($kelasArray as $kelas) {
-                                $siswaList = $query->where(['kelas.jurusan_id' => $jurusan, 'kelas.kelas' => $kelas])->all();
-                                foreach ($siswaList as $siswa) {
-                                    $model = new TagihanModel([
-                                        'siswa_id' => $siswa->id,
-                                        'jenis_pembayaran_id' => $jenis->id,
-                                        'total_tagihan' => $jenis->nominal,
-                                        'status' => 0,
-                                        'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
-                                    ]);
-                                    $model->save();
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // return $this->redirect(['index']);
+                $model->bukti_bayar->saveAs($path);
+                $model->bukti_bayar = $filename;
             }
-        } else {
-            $model->loadDefaultValues();
+
+            $model->dibayar_oleh = 'siswa'; // Atur sesuai dengan role yang sesuai
+            if ($model->save(false)) { // skip validate karena sudah dilakukan
+                Yii::$app->session->setFlash('success', 'Pembayaran berhasil disimpan.');
+                return $this->redirect(['tagihan-siswa/view', 'id' => $model->tagihan_id]);
+            }
+            $model->addErrors($model->getErrors());
+                return $this->redirect(['tagihan-siswa/view', 'id' => $model->tagihan_id]);
+
+            
         }
 
-        return $this->render('create', [
-            'model' => $model,
-            'jenisPembayaranList' => $jenisPembayaranList,
-        ]);
     }
 
     /**

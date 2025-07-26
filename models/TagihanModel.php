@@ -97,7 +97,7 @@ class TagihanModel extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPembayarans()
+    public function getPembayaran()
     {
         return $this->hasMany(PembayaranModel::class, ['tagihan_id' => 'id']);
     }

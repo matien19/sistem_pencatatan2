@@ -319,4 +319,15 @@ class TagihanController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    public function actionVerifikasi($id)
+    {
+        $model = $this->findModel($id);
+        $model->status = 1; // asumsi status true artinya sudah diverifikasi
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Pembayaran berhasil diverifikasi.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Gagal memverifikasi pembayaran.');
+        }
+        return $this->redirect(['index']); // sesuaikan redirect
+    }
 }

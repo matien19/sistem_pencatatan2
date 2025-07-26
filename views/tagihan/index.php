@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 [
                                     'label' => 'Nama Siswa',
                                     'value' => function ($model) {
-                                        return $model->siswa->nama ?? '-';
+                                        return $model->siswa->nama . ' [' . ($model->siswa->nisn ?? '-') . ']' ?? '-' ;
                                     },
                                 ],
                                 [
@@ -63,6 +63,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     },
                                 ],
                                 [
+                                    'label' => 'Jumlah Dibayar',
+                                    'value' => function ($model) {
+                                        $bayar = 0;
+                                        foreach ($model->pembayaran as $pembayaran) {
+                                            $bayar += $pembayaran->nominal_bayar ?? 0;
+                                        }
+                                        return 'Rp ' . number_format($bayar, 0, ',', '.');
+                                    },
+                                ],
+                                [
                                     'attribute' => 'tanggal_jatuh_tempo',
                                     'label' => 'Tanggal Jatuh Tempo',
                                     'format' => ['date', 'php:d F Y'],
@@ -71,14 +81,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attribute' => 'status',
                                     'label' => 'Status Pembayaran',
                                     'value' => function ($model) {
-                                       if ($model->status == false) {
-                                            if (empty($model->pembayaran) || empty($model->pembayaran->tgl_bayar)) {
-                                                return 'Belum Dibayar';
+                                        $pembayaran = $model->pembayaran[0] ?? null;
+
+                                        if ($model->status == false) {
+                                            if (empty($pembayaran) || empty($pembayaran->tanggal_bayar)) {
+                                                return $status = 'Belum Dibayar';
                                             } else {
-                                                return 'Sudah Bayar (Belum Diverifikasi)';
+                                                return $status = 'Sudah Bayar (Belum Diverifikasi)';
                                             }
                                         } else {
-                                            return 'Sudah Dibayar (Sudah Diverifikasi)';
+                                            return $status = 'Sudah Dibayar (Sudah Diverifikasi)';
                                         }
                                     },
                                 ],
@@ -93,13 +105,41 @@ $this->params['breadcrumbs'][] = $this->title;
                                 //         return '-';
                                 //     },
                                 // ],
-                                [
+                               [
                                     'class' => ActionColumn::className(),
-                                    'template' => '{view} {delete}', // hanya tampilkan view dan delete
+                                    'template' => '{view} {verifikasi} {delete}', // tambahkan tombol verifikasi
                                     'urlCreator' => function ($action, $model, $key, $index, $column) {
                                         return Url::toRoute([$action, 'id' => $model->id]);
                                     },
+                                    'visibleButtons' => [
+                                        'verifikasi' => function ($model) {
+                                            $totalBayar = 0;
+                                            foreach ($model->pembayaran as $pembayaran) {
+                                                $totalBayar += $pembayaran->nominal_bayar ?? 0;
+                                            }
+
+                                            return $model->status == false &&
+                                                !empty($model->pembayaran) &&
+                                                !empty($model->pembayaran[0]->tanggal_bayar) &&
+                                                $totalBayar >= $model->total_tagihan;
+                                        },
+                                    ],
+                                    'buttons' => [
+                                        'verifikasi' => function ($url, $model, $key) {
+                                           return Html::a(
+                                                '<span class="fas fa-check"></span>',
+                                                ['verifikasi', 'id' => $model->id],
+                                                [
+                                                    // 'class' => 'btn btn-xs btn-success',
+                                                    'data-confirm' => 'Apakah Anda yakin ingin memverifikasi pembayaran ini?',
+                                                    'data-method' => 'post',
+                                                    'title' => 'Verifikasi Pembayaran',
+                                                ]
+                                            );
+                                        },
+                                    ],
                                 ],
+
                             ],
                         ]); ?>
 
@@ -117,7 +157,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'label' => 'Nama Siswa',
                                 'value' => function ($model) {
-                                    return $model->calonSiswa->nama ?? '-';
+                                    return $model->calonSiswa->nama . ' [' . ($model->calonSiswa->no_pendaftaran) . ']' ?? '-';
                                 },
                             ],
                             [
@@ -142,8 +182,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'status',
                                 'label' => 'Status Pembayaran',
                                 'value' => function ($model) {
+                                    $pembayaran = $model->pembayaran[0] ?? null;
+
                                     if ($model->status == false) {
-                                        if (empty($model->pembayaran) || empty($model->pembayaran->tgl_bayar)) {
+                                        if (empty($pembayaran) || empty($pembayaran->tanggal_bayar)) {
                                             return 'Belum Dibayar';
                                         } else {
                                             return 'Sudah Bayar (Belum Diverifikasi)';
