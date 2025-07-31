@@ -63,17 +63,17 @@
                                 'url' => ['kelas/index'],
                                 'active' => Yii::$app->controller->id === 'kelas',
                             ],
-                            [
-                                'label' => 'Calon Siswa',
-                                'iconStyle' => 'far',
-                                'url' => ['calon-siswa/index'],
-                                'active' => Yii::$app->controller->id === 'calon-siswa',
-                            ],
+                            // [
+                            //     'label' => 'Calon Siswa',
+                            //     'iconStyle' => 'far',
+                            //     'url' => ['calon-siswa/index'],
+                            //     'active' => Yii::$app->controller->id === 'calon-siswa',
+                            // ],
                             [
                                 'label' => 'Siswa',
                                 'iconStyle' => 'far',
                                 'url' => ['siswa/index'],
-                                'active' => Yii::$app->controller->id === 'siswa',
+                                'active' => Yii::$app->controller->id === 'siswa' || Yii::$app->controller->id === 'calon-siswa',
                             ],
                             [
                                 'label' => 'Staf',

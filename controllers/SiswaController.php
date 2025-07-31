@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\SearchCalonSiswaModel;
 use app\models\SiswaModel;
 use app\models\SearchSiswaModel;
 use app\models\User;
@@ -56,9 +57,13 @@ class SiswaController extends Controller
         $searchModel = new SearchSiswaModel();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
+        $searchCalon = new SearchCalonSiswaModel();
+        $dataProviderCalonSiswa = $searchCalon->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'dataProviderSiswa' => $dataProvider,
+            'dataProviderCalonSiswa' => $dataProviderCalonSiswa,
         ]);
     }
 
