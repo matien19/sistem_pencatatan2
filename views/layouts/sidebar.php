@@ -34,19 +34,8 @@
         <nav class="mt-2">
             <?php
             $userRole = Yii::$app->user->identity->role ?? '';
-
-            if ($userRole == 'siswa' || $userRole == 'calon_siswa' ) {
-                $menuItems = [
-                    ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/siswa']],
-                    [
-                        'label' => 'Tagihan', 
-                        'icon' => 'file-invoice-dollar', 
-                        'url' => ['tagihan-siswa/index'],
-                        'active' => Yii::$app->controller->id === 'tagihan-siswa',
-                    ],
-                        
-                ];
-            } else {
+            $menuItems = [];
+            if ($userRole == 'admin' || $userRole == 'staf' ) {
                 $menuItems = [
                     ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/index']],
                     [
@@ -55,7 +44,10 @@
                         'url' => ['tagihan/index'],
                         'active' => Yii::$app->controller->id === 'tagihan',
                     ],
-                    [
+                ];
+
+                if ($userRole == 'admin') {
+                    $menuItems[] = [
                         'label' => 'Master Data',
                         'icon' => 'database',
                         'items' => [
@@ -96,8 +88,21 @@
                                 'active' => Yii::$app->controller->id === 'jenis-pembayaran',
                             ],
                         ],
+                    ];
+                }
+ 
+            } else {
+                $menuItems = [
+                    ['label' => 'Beranda', 'icon' => 'tachometer-alt', 'url' => ['beranda/siswa']],
+                    [
+                        'label' => 'Tagihan', 
+                        'icon' => 'file-invoice-dollar', 
+                        'url' => ['tagihan-siswa/index'],
+                        'active' => Yii::$app->controller->id === 'tagihan-siswa',
                     ],
+                        
                 ];
+                
             }
 
             echo \hail812\adminlte\widgets\Menu::widget([

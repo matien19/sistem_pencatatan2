@@ -82,12 +82,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endif; ?>
 
             <?php 
-            if ($bayar < $model->total_tagihan) {
-                Html::button('Tambah Pembayaran', [
+            if ($bayar < $model->total_tagihan ) {
+              echo  Html::button('Tambah Pembayaran', [
                 'class' => 'btn btn-success',
                 'data-toggle' => 'modal',
                 'data-target' => '#modal-pembayaran'
-            ]);
+                ]);
             } else {
                 if ($model->status == false) {
                     echo '<p class="text-warning">Pembayaran sudah dilakukan, namun belum diverifikasi.</p>';

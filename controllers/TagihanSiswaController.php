@@ -43,7 +43,7 @@ class TagihanSiswaController extends Controller
                             'allow' => true,
                             'roles' => ['@'],
                             'matchCallback' => function ($rule, $action) {
-                            return !\Yii::$app->user->isGuest && in_array(\Yii::$app->user->identity->role, ['siswa', 'calon_siswa']);
+                            return !\Yii::$app->user->isGuest && \Yii::$app->user->identity->role === 'siswa' || \Yii::$app->user->identity->role === 'calon_siswa';
                             },
                         ],
                     ],

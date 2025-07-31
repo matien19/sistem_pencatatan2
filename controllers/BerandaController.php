@@ -28,7 +28,7 @@ class BerandaController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                            return Yii::$app->user->identity->role === 'staf';
+                            return Yii::$app->user->identity->role === 'staf' || Yii::$app->user->identity->role === 'admin';
                         },
                     ],
                     [
