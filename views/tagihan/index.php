@@ -19,9 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
         </div>
         <div class="card-body">
-            <p>
-                <?= Html::a('Tambah Tagihan', ['create'], ['class' => 'btn btn-success']) ?>
-            </p>
+            <?php 
+            if (\Yii::$app->user->identity->role === 'admin') {
+                echo '<p>' . Html::a('Tambah Tagihan', ['create'], ['class' => 'btn btn-success']) . '</p>';
+            }
+            ?>
+            
 
             <!-- Nav Tabs -->
             <ul class="nav nav-tabs" id="tagihanTabs" role="tablist">
