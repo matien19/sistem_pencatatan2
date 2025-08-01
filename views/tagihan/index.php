@@ -83,17 +83,18 @@ $this->params['breadcrumbs'][] = $this->title;
                                 [
                                     'attribute' => 'status',
                                     'label' => 'Status Pembayaran',
+                                    'format' => 'raw',
                                     'value' => function ($model) {
                                         $pembayaran = $model->pembayaran[0] ?? null;
 
                                         if ($model->status == false) {
                                             if (empty($pembayaran) || empty($pembayaran->tanggal_bayar)) {
-                                                return $status = 'Belum Dibayar';
+                                                return '<span class="badge badge-danger">Belum Dibayar</span>';
                                             } else {
-                                                return $status = 'Sudah Bayar (Belum Diverifikasi)';
+                                                return '<span class="badge badge-warning">Sudah Bayar (Belum Diverifikasi)</span>';
                                             }
                                         } else {
-                                            return $status = 'Sudah Dibayar (Sudah Diverifikasi)';
+                                            return '<span class="badge badge-success">Sudah Dibayar (Sudah Diverifikasi)</span>';
                                         }
                                     },
                                 ],
@@ -177,6 +178,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 },
                             ],
                             [
+                                    'label' => 'Jumlah Dibayar',
+                                    'value' => function ($model) {
+                                        $bayar = 0;
+                                        foreach ($model->pembayaran as $pembayaran) {
+                                            $bayar += $pembayaran->nominal_bayar ?? 0;
+                                        }
+                                        return 'Rp ' . number_format($bayar, 0, ',', '.');
+                                    },
+                                ],
+                            [
                                 'attribute' => 'tanggal_jatuh_tempo',
                                 'label' => 'Tanggal Jatuh Tempo',
                                 'format' => ['date', 'php:d F Y'],
@@ -184,17 +195,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'status',
                                 'label' => 'Status Pembayaran',
+                                'format' => 'raw',
                                 'value' => function ($model) {
                                     $pembayaran = $model->pembayaran[0] ?? null;
 
                                     if ($model->status == false) {
                                         if (empty($pembayaran) || empty($pembayaran->tanggal_bayar)) {
-                                            return 'Belum Dibayar';
+                                            return '<span class="badge badge-danger">Belum Dibayar</span>';
                                         } else {
-                                            return 'Sudah Bayar (Belum Diverifikasi)';
+                                            return '<span class="badge badge-warning">Sudah Bayar (Belum Diverifikasi)</span>';
                                         }
                                     } else {
-                                        return 'Sudah Dibayar (Sudah Diverifikasi)';
+                                        return '<span class="badge badge-success">Sudah Dibayar (Sudah Diverifikasi)</span>';
                                     }
                                 },
                             ],
@@ -210,12 +222,39 @@ $this->params['breadcrumbs'][] = $this->title;
                             //     },
                             // ],
                             [
-                                'class' => ActionColumn::className(),
-                                'template' => '{view} {delete}', // hanya tampilkan view dan delete
-                                'urlCreator' => function ($action, $model, $key, $index, $column) {
-                                    return Url::toRoute([$action, 'id' => $model->id]);
-                                },
-                            ],
+                                    'class' => ActionColumn::className(),
+                                    'template' => '{view} {verifikasi} {delete}', // tambahkan tombol verifikasi
+                                    'urlCreator' => function ($action, $model, $key, $index, $column) {
+                                        return Url::toRoute([$action, 'id' => $model->id]);
+                                    },
+                                    'visibleButtons' => [
+                                        'verifikasi' => function ($model) {
+                                            $totalBayar = 0;
+                                            foreach ($model->pembayaran as $pembayaran) {
+                                                $totalBayar += $pembayaran->nominal_bayar ?? 0;
+                                            }
+
+                                            return $model->status == false &&
+                                                !empty($model->pembayaran) &&
+                                                !empty($model->pembayaran[0]->tanggal_bayar) &&
+                                                $totalBayar >= $model->total_tagihan;
+                                        },
+                                    ],
+                                    'buttons' => [
+                                        'verifikasi' => function ($url, $model, $key) {
+                                           return Html::a(
+                                                '<span class="fas fa-check"></span>',
+                                                ['verifikasi', 'id' => $model->id],
+                                                [
+                                                    // 'class' => 'btn btn-xs btn-success',
+                                                    'data-confirm' => 'Apakah Anda yakin ingin memverifikasi pembayaran ini?',
+                                                    'data-method' => 'post',
+                                                    'title' => 'Verifikasi Pembayaran',
+                                                ]
+                                            );
+                                        },
+                                    ],
+                                ],
                         ],
                     ]); ?>
                     <?php Pjax::end(); ?>

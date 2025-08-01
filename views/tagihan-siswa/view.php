@@ -27,6 +27,29 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
+                     [
+                        'attribute' => 'siswa_id',
+                        'label' => 'Nama Siswa',
+                        'value' => function ($model) {
+                            if ($model->siswa) {
+                                return $model->siswa->nama;
+                            } elseif ($model->calonSiswa) {
+                                return $model->calonSiswa->nama;
+                            } else {
+                                return '-';
+                            }
+                        },
+                    ],
+                    [
+                        'label' => 'Kelas',
+                        'value' => function ($model) {
+                            $kelas = $model->siswa->kelas ?? null;
+                            if ($kelas) {
+                                return $kelas->kelas . $kelas->nama;
+                            }
+                            return '-';
+                        },
+                    ],
                     [
                         'label' => 'Jenis Pembayaran',
                         'value' => function ($model) {

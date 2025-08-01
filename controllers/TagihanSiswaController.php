@@ -60,12 +60,22 @@ class TagihanSiswaController extends Controller
     public function actionIndex()
     {
         $userId = Yii::$app->user->id;
+        // Coba cari dari tabel siswa dulu
         $siswa = SiswaModel::findOne(['user_id' => $userId]);
-        if (!$siswa) {
-            throw new NotFoundHttpException('Siswa not found.');
+
+        if ($siswa) {
+            $query = TagihanModel::find()->where(['siswa_id' => $siswa->id])->orderBy(['created_at' => SORT_DESC]);
+        } else {
+            // Jika tidak ditemukan, coba cari dari calon siswa
+            $calonSiswa = CalonSiswaModel::findOne(['user_id' => $userId]);
+
+            if ($calonSiswa) {
+                $query = TagihanModel::find()->where(['calon_siswa_id' => $calonSiswa->id])->orderBy(['created_at' => SORT_DESC]);
+            } else {
+                throw new NotFoundHttpException('Siswa atau Calon Siswa tidak ditemukan.');
+            }
         }
         $searchModel = new SearchTagihanModel();
-        $query = TagihanModel::find()->where(['siswa_id' => $siswa->id]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\CalonSiswaModel;
 use app\models\JenisPembayaranModel;
+use app\models\PembayaranModel;
 use app\models\TagihanModel;
 use app\models\SearchTagihanModel;
 use app\models\SiswaModel;
@@ -14,6 +15,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * TagihanController implements the CRUD actions for TagihanModel model.
@@ -85,9 +87,10 @@ class TagihanController extends Controller
      */
     public function actionView($id)
     {
-        
+        $pembayaranBaru = new PembayaranModel();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'pembayaranBaru' => $pembayaranBaru,
         ]);
     }
 
@@ -300,6 +303,10 @@ class TagihanController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        $pembayaran = PembayaranModel::find()->where(['tagihan_id' => $id])->all();
+        foreach ($pembayaran as $pembayaranItem) {
+            $pembayaranItem->delete();
+        }
 
         return $this->redirect(['index']);
     }
@@ -330,4 +337,64 @@ class TagihanController extends Controller
         }
         return $this->redirect(['index']); // sesuaikan redirect
     }
+    public function actionPembayaran()
+    {
+        $model = new PembayaranModel();
+        
+        if ($model->load(Yii::$app->request->post())) {
+            // echo '<pre>';
+            // print_r($model->attributes);
+            // Tangkap file upload
+            $model->bukti_bayar = UploadedFile::getInstance($model, 'bukti_bayar');
+
+            // Proses simpan file jika ada bukti
+            if ($model->bukti_bayar) {
+                $uploadPath = Yii::getAlias('@webroot/bukti/');
+
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0777, true); // buat folder jika belum ada
+                }
+
+                $filename = 'bukti_' . time() . '.' . $model->bukti_bayar->extension;
+                $path = $uploadPath . $filename;
+
+                $model->bukti_bayar->saveAs($path);
+                $model->bukti_bayar = $filename;
+            }
+
+            $model->dibayar_oleh = 'siswa'; // Atur sesuai dengan role yang sesuai
+            if ($model->save(false)) { // skip validate karena sudah dilakukan
+                Yii::$app->session->setFlash('success', 'Pembayaran berhasil disimpan.');
+                return $this->redirect(['tagihan/view', 'id' => $model->tagihan_id]);
+            }
+            $model->addErrors($model->getErrors());
+                return $this->redirect(['tagihan/view', 'id' => $model->tagihan_id]);
+
+        }
+    }
+    public function actionVerifikasipem($id)
+    {
+        
+        $model = PembayaranModel::findOne($id);
+        $model->status = 1; // asumsi status true artinya sudah diverifikasi
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Pembayaran berhasil diverifikasi.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Gagal memverifikasi pembayaran.');
+        }
+        return $this->redirect(Yii::$app->request->referrer ?: ['tagihan/index']);
+    }
+    public function actionTolakpem($id)
+    {
+        $model = PembayaranModel::findOne($id);
+        $model->status = 2;
+        $model->nominal_bayar = 0; // Reset jumlah bayar jika ditolak
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Pembayaran berhasil ditolak.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Gagal menolak pembayaran.');
+        }
+        return $this->redirect(Yii::$app->request->referrer ?: ['tagihan/index']);
+    }
+
 }

@@ -55,17 +55,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'status',
                         'label' => 'Status Pembayaran',
+                        'format' => 'raw',
                         'value' => function ($model) {
                             $pembayaran = $model->pembayaran[0] ?? null;
 
-                            if ($model->status == 0) {
+                            if ($model->status == false) {
                                 if (empty($pembayaran) || empty($pembayaran->tanggal_bayar)) {
-                                    return 'Belum Dibayar';
+                                    return '<span class="badge badge-danger">Belum Dibayar</span>';
                                 } else {
-                                    return 'Sudah Bayar (Belum Diverifikasi)';
+                                    return '<span class="badge badge-warning">Sudah Bayar (Belum Diverifikasi)</span>';
                                 }
                             } else {
-                                return 'Sudah Dibayar (Sudah Diverifikasi)';
+                                return '<span class="badge badge-success">Sudah Dibayar (Sudah Diverifikasi)</span>';
                             }
                         },
                     ],

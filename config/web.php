@@ -48,6 +48,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'beranda/index',
+                // 'tagihan/verifikasi-pembayaran' => 'tagihan/verifikasipembayaran',
+                // 'tagihan/tolak-pembayaran' => 'tagihan/tolakpembayaran',
             ],
         ],
     ],

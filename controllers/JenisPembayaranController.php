@@ -185,8 +185,8 @@ class JenisPembayaranController extends Controller
 
                 $model->updated_at = date('Y-m-d H:i:s');
 
-                $model->kelas = !empty($kelas) ? json_encode($kelas) : '-';
-                $model->jurusan_id = !empty($jurusan) ? json_encode($jurusan) : '-';
+                $model->kelas = !empty($kelas) ? json_encode($kelas) : '["-"]';
+                $model->jurusan_id = !empty($jurusan) ? json_encode($jurusan) : '["-"]';
 
                 if ($model->save(false)) {
                     Yii::$app->session->setFlash('success', 'Jenis pembayaran berhasil diperbarui.');
@@ -197,8 +197,8 @@ class JenisPembayaranController extends Controller
             }
         } else {
             // decode JSON agar saat update form bisa diisi ulang sebagai array
-            $model->kelas = is_string($model->kelas) && $model->kelas !== '-' ? json_decode($model->kelas, true) : [];
-            $model->jurusan_id = is_string($model->jurusan_id) && $model->jurusan_id !== '-' ? json_decode($model->jurusan_id, true) : [];
+            $model->kelas = is_string($model->kelas) && $model->kelas !== '["-"]' ? json_decode($model->kelas, true) : [];
+            $model->jurusan_id = is_string($model->jurusan_id) && $model->jurusan_id !== '["-"]' ? json_decode($model->jurusan_id, true) : [];
         }
 
         return $this->render('update', [

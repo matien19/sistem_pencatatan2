@@ -1,5 +1,7 @@
 <?php
 
+use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -25,6 +27,30 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
+                    // 'id',
+                    [
+                        'attribute' => 'siswa_id',
+                        'label' => 'Nama Siswa',
+                        'value' => function ($model) {
+                            if ($model->siswa) {
+                                return $model->siswa->nama;
+                            } elseif ($model->calonSiswa) {
+                                return $model->calonSiswa->nama;
+                            } else {
+                                return '-';
+                            }
+                        },
+                    ],
+                    [
+                        'label' => 'Kelas',
+                        'value' => function ($model) {
+                            $kelas = $model->siswa->kelas ?? null;
+                            if ($kelas) {
+                                return $kelas->kelas . $kelas->nama;
+                            }
+                            return '-';
+                        },
+                    ],
                     [
                         'label' => 'Jenis Pembayaran',
                         'value' => function ($model) {
@@ -46,17 +72,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'status',
                         'label' => 'Status Pembayaran',
+                        'format' => 'raw',
                         'value' => function ($model) {
                             $pembayaran = $model->pembayaran[0] ?? null;
 
                             if ($model->status == false) {
                                 if (empty($pembayaran) || empty($pembayaran->tanggal_bayar)) {
-                                    return 'Belum Dibayar';
+                                    return '<span class="badge badge-danger">Belum Dibayar</span>';
                                 } else {
-                                    return 'Sudah Bayar (Belum Diverifikasi)';
+                                    return '<span class="badge badge-warning">Sudah Bayar (Belum Diverifikasi)</span>';
                                 }
                             } else {
-                                return 'Sudah Dibayar (Sudah Diverifikasi)';
+                                return '<span class="badge badge-success">Sudah Dibayar (Sudah Diverifikasi)</span>';
                             }
                         },
                     ],
@@ -78,6 +105,49 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::errorSummary($model, ['encode' => false, 'header' => '', 'class' => 'mb-0']) ?>
                 </div>
             <?php endif; ?>
+            
+            <?php 
+              echo  Html::button('Tambah Pembayaran', [
+                'class' => 'btn btn-success',
+                'data-toggle' => 'modal',
+                'data-target' => '#modal-pembayaran'
+                ]);
+            ?>
+
+            <?php Modal::begin([
+                'title' => 'Form Pembayaran',
+                'id' => 'modal-pembayaran',
+                'size' => Modal::SIZE_LARGE,
+            ]); ?>
+
+           
+            <?php $form = ActiveForm::begin([
+                'id' => 'form-tambah-pembayaran',
+                'action' => ['tagihan/pembayaran'],
+                'options' => ['enctype' => 'multipart/form-data'],
+            ]); ?>
+
+            <?= $form->field($pembayaranBaru, 'tagihan_id')->hiddenInput(['value' => $model->id])->label(false) ?>
+
+            <?= $form->field($pembayaranBaru, 'tanggal_bayar')->input('date') ?>
+
+            <?= $form->field($pembayaranBaru, 'nominal_bayar')->textInput(['type' => 'number']) ?>
+
+            <?= $form->field($pembayaranBaru, 'metode_bayar')->dropDownList([
+                'transfer' => 'Transfer',
+                'cash' => 'Cash',
+            ], ['prompt' => 'Pilih Metode Pembayaran']) ?>
+
+            <?= $form->field($pembayaranBaru, 'bukti_bayar')->fileInput() ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Simpan Pembayaran', ['class' => 'btn btn-success']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+
+            <?php Modal::end(); ?>
+            
             <br>
             
             <div class="table-responsive">
@@ -89,6 +159,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th>Metode Bayar</th>
                                 <th>Bukti Bayar</th>
                                 <th>Jumlah Bayar</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,9 +183,34 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php endif; ?>
                                     </td>
                                     <td><?= 'Rp ' . number_format($pembayaran->nominal_bayar, 0, ',', '.') ?></td>
-
+                                    <td>
+                                        <?php if ($pembayaran->status == 0): ?>
+                                            <span class="badge badge-warning">Belum Diverifikasi</span>
+                                        <?php elseif ($pembayaran->status == 1): ?>
+                                            <span class="badge badge-success">Diterima</span>
+                                        <?php else: ?>
+                                            <span class="badge badge-danger">Ditolak</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        if ($pembayaran->status == 0): // Belum diverifikasi
+                                        ?>
+                                            <?= Html::a('Verifikasi', ['tagihan/verifikasipem', 'id' => $pembayaran->id], [
+                                                'class' => 'btn btn-primary btn-sm',
+                                                'data-method' => 'post',
+                                                'data-confirm' => 'Apakah Anda yakin ingin memverifikasi pembayaran ini?',
+                                            ]) ?>
+                                            <?= Html::a('Tolak', ['tagihan/tolakpem', 'id' => $pembayaran->id], [
+                                                'class' => 'btn btn-danger btn-sm',
+                                                'data-method' => 'post',
+                                                'data-confirm' => 'Apakah Anda yakin ingin menolak pembayaran ini?',
+                                            ]) ?>
+                                        <?php else: ?>
+                                            <span class="text-muted">Tidak ada aksi</span>
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
-                               
                             <?php endforeach; ?>
                             <tr>
                                 <td colspan="3" class="text-right"><strong>Total Pembayaran:</strong></td>
@@ -127,3 +224,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
+<script>
+    document.getElementById('btn-tambah-pembayaran').addEventListener('click', function() {
+        var form = document.getElementById('form-tambah-pembayaran');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    });
+</script>

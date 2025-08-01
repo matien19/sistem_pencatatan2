@@ -143,6 +143,7 @@ class CalonSiswaController extends Controller
                 $user->email = $postData['email'] ?? $user->email;
                 $user->username = 'REG' . ($postData['no_pendaftaran'] ?? $model->no_pendaftaran);
                 $user->password = Yii::$app->security->generatePasswordHash($user->username);
+                $user->role = 'siswa';
                 $user->updated_at = date('Y-m-d H:i:s');
             }
 
@@ -188,7 +189,7 @@ class CalonSiswaController extends Controller
         // Hapus siswa
         $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['siswa/index']);
     }
 
     /**
