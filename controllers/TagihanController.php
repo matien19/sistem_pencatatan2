@@ -59,9 +59,6 @@ class TagihanController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new SearchTagihanModel();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-        
         $querySiswa = TagihanModel::find()->where(['not', ['siswa_id' => null]]);
         $queryCalon = TagihanModel::find()->where(['not', ['calon_siswa_id' => null]]);
 

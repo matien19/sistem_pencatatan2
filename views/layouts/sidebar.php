@@ -89,6 +89,12 @@
                             ],
                         ],
                     ];
+                    $menuItems[] = [
+                        'label' => 'Laporan',
+                        'iconStyle' => 'fas fa-clipboard',
+                        'url' => ['laporan/index'],
+                        'active' => Yii::$app->controller->id === 'laporan',
+                    ];
                 }
  
             } else {
