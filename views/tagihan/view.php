@@ -138,7 +138,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'cash' => 'Cash',
             ], ['prompt' => 'Pilih Metode Pembayaran']) ?>
 
-            <?= $form->field($pembayaranBaru, 'bukti_bayar')->fileInput() ?>
+            <?= $form->field($pembayaranBaru, 'bukti_bayar')->fileInput([
+                'accept' => 'image/jpeg, image/png'
+            ]) ?>
 
             <div class="form-group">
                 <?= Html::submitButton('Simpan Pembayaran', ['class' => 'btn btn-success']) ?>
@@ -149,6 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php Modal::end(); ?>
             
             <br>
+            
             
             <div class="table-responsive">
                 <div class="grid-view">

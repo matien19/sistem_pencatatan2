@@ -346,10 +346,22 @@ class TagihanController extends Controller
 
             // Proses simpan file jika ada bukti
             if ($model->bukti_bayar) {
-                $uploadPath = Yii::getAlias('@webroot/bukti/');
+                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+                $maxSize = 5 * 1024 * 1024; 
 
+                if (!in_array(strtolower($model->bukti_bayar->extension), $allowedExtensions)) {
+                    Yii::$app->session->setFlash('error', 'Format file harus JPG atau PNG.');
+                    return $this->redirect(Yii::$app->request->referrer);
+                }
+
+                if ($model->bukti_bayar->size > $maxSize) {
+                    Yii::$app->session->setFlash('error', 'Ukuran file maksimal adalah 5MB.');
+                    return $this->redirect(Yii::$app->request->referrer);
+                }
+
+                $uploadPath = Yii::getAlias('@webroot/bukti/');
                 if (!is_dir($uploadPath)) {
-                    mkdir($uploadPath, 0777, true); // buat folder jika belum ada
+                    mkdir($uploadPath, 0777, true);
                 }
 
                 $filename = 'bukti_' . time() . '.' . $model->bukti_bayar->extension;

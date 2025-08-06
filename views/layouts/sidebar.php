@@ -82,6 +82,12 @@
                                 'active' => Yii::$app->controller->id === 'staf',
                             ],
                             [
+                                'label' => 'Nama Pembayaran',
+                                'iconStyle' => 'far',
+                                'url' => ['nama-pembayaran/index'],
+                                'active' => Yii::$app->controller->id === 'nama-pembayaran',
+                            ],
+                            [
                                 'label' => 'Jenis Pembayaran',
                                 'iconStyle' => 'far',
                                 'url' => ['jenis-pembayaran/index'],
