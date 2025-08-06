@@ -15,18 +15,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-
-    <?= $form->field($model, 'nama_pembayaran')->dropDownList([
-        '' => 'Pilih Nama Pembayaran',
-        'Daftar Ulang Siswa Baru' => 'Daftar Ulang Siswa Baru',
-        'SPP' => 'SPP',
-        'Penilaian Sumatif Tengah Semester' => 'Penilaian Sumatif Tengah Semester',
-        'Penilaian Sumatif Akhir Tahun' => 'Penilaian Sumatif Akhir Tahun',
-        'Penilaian Sumatif Akhir Jenjang' => 'Penilaian Sumatif Akhir Jenjang',
-        'Praktik Kerja Lapangan' => 'Praktik Kerja Lapangan',
-        'Perpisahan' => 'Perpisahan',
-        'Kunjungan Industri' => 'Kunjungan Industri',
-    ], ['class' => 'form-control'])->label('Nama Pembayaran') ?>
+    <?= $form->field($model, 'nama_pembayaran')->dropDownList(
+        ArrayHelper::map($nama_pembayaran, 'nama_pembayaran', 'nama_pembayaran'),
+        ['prompt' => '-- Pilih Nama Pembayaran --']
+    ) ?>
 
     <?= $form->field($model, 'nominal')->input('number', [
         'placeholder' => 'Masukkan nominal',

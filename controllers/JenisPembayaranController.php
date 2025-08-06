@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\JenisPembayaranModel;
 use app\models\KelasModel;
+use app\models\NamaPembayaranModel;
 use app\models\SearchJenisPembayaranModel;
 use Yii;
 use yii\filters\AccessControl;
@@ -101,7 +102,7 @@ class JenisPembayaranController extends Controller
     public function actionCreate()
     {
         $model = new JenisPembayaranModel();
-
+        $nama_pembayaran = NamaPembayaranModel::find()->all();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 // Validasi data sebelum menyimpan
@@ -153,6 +154,7 @@ class JenisPembayaranController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'nama_pembayaran' => $nama_pembayaran,
         ]);
     }
 
