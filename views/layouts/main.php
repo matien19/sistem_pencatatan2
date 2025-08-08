@@ -27,6 +27,7 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/chart.js', ['position' => \y
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?= Html::csrfMetaTags() ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <?php $this->beginBody() ?>

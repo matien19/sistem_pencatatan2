@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\CalonSiswaModel;
 use app\models\JenisPembayaranModel;
+use app\models\NotifikasiModel;
 use app\models\PembayaranModel;
 use app\models\TagihanModel;
 use app\models\SearchTagihanModel;
@@ -328,6 +329,17 @@ class TagihanController extends Controller
         $model = $this->findModel($id);
         $model->status = 1; // asumsi status true artinya sudah diverifikasi
         if ($model->save()) {
+            $siswa = SiswaModel::findOne($model->siswa_id);
+            if (!$siswa) {
+                $siswa = CalonSiswaModel::findOne($model->calon_siswa_id);
+            }
+            $notifikasi = new NotifikasiModel();
+            $notifikasi->id_tagihan = $model->id;
+            $notifikasi->user_id = $siswa->user_id;
+            $notifikasi->pesan = "Tagihan {$model->jenisPembayaran->nama_pembayaran} Rp {$model->total_tagihan} telah diverifikasi dan Lunas.";
+            $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
+            $notifikasi->save(false);
+
             Yii::$app->session->setFlash('success', 'Pembayaran berhasil diverifikasi.');
         } else {
             Yii::$app->session->setFlash('error', 'Gagal memverifikasi pembayaran.');
@@ -371,8 +383,28 @@ class TagihanController extends Controller
                 $model->bukti_bayar = $filename;
             }
 
-            $model->dibayar_oleh = 'siswa'; // Atur sesuai dengan role yang sesuai
-            if ($model->save(false)) { // skip validate karena sudah dilakukan
+            $model->dibayar_oleh = 'staf';
+            $model->status = 1;
+            if ($model->save(false)) { 
+                $tagihan = TagihanModel::findOne($model->tagihan_id);
+                $siswa = SiswaModel::findOne($tagihan->siswa_id);
+                if (!$siswa) {
+                    $siswa = CalonSiswaModel::findOne($tagihan->calon_siswa_id);
+                }
+                $totalBayar = PembayaranModel::find()
+                    ->where(['tagihan_id' => $model->tagihan_id])
+                    ->sum('nominal_bayar'); 
+                $sisa_bayar = $tagihan->total_tagihan - $totalBayar;
+                if ($sisa_bayar < 0) {
+                    $sisa_bayar = 0; // Pastikan sisa bayar tidak negatif
+                }
+                $notifikasi = new NotifikasiModel();
+                $notifikasi->id_tagihan = $model->tagihan_id;
+                $notifikasi->user_id = $siswa->user_id;
+                $notifikasi->pesan = "Pembayaran Rp {$model->nominal_bayar} diterima. Sisa: Rp {$sisa_bayar}";
+                $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
+                $notifikasi->save(false);
+
                 Yii::$app->session->setFlash('success', 'Pembayaran berhasil disimpan.');
                 return $this->redirect(['tagihan/view', 'id' => $model->tagihan_id]);
             }
@@ -387,6 +419,26 @@ class TagihanController extends Controller
         $model = PembayaranModel::findOne($id);
         $model->status = 1; // asumsi status true artinya sudah diverifikasi
         if ($model->save()) {
+            $tagihan = TagihanModel::findOne($model->tagihan_id);
+            $siswa = SiswaModel::findOne($tagihan->siswa_id);
+            if (!$siswa) {
+                $siswa = CalonSiswaModel::findOne($tagihan->calon_siswa_id);
+            }
+
+            $totalBayar = PembayaranModel::find()
+                ->where(['tagihan_id' => $model->tagihan_id])
+                ->sum('nominal_bayar'); 
+            $sisa_bayar = $tagihan->total_tagihan - $totalBayar;
+            if ($sisa_bayar < 0) {
+                $sisa_bayar = 0; // Pastikan sisa bayar tidak negatif
+            }
+            $notifikasi = new NotifikasiModel();
+            $notifikasi->id_tagihan = $model->tagihan_id;
+            $notifikasi->user_id = $siswa->user_id;
+            $notifikasi->pesan = "Pembayaran Rp {$model->nominal_bayar} diterima. Sisa: Rp {$sisa_bayar}";
+            $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
+            $notifikasi->save(false);
+
             Yii::$app->session->setFlash('success', 'Pembayaran berhasil diverifikasi.');
         } else {
             Yii::$app->session->setFlash('error', 'Gagal memverifikasi pembayaran.');
@@ -399,6 +451,19 @@ class TagihanController extends Controller
         $model->status = 2;
         $model->nominal_bayar = 0; // Reset jumlah bayar jika ditolak
         if ($model->save()) {
+            $tagihan = TagihanModel::findOne($model->tagihan_id);
+            $siswa = SiswaModel::findOne($tagihan->siswa_id);
+            if (!$siswa) {
+                $siswa = CalonSiswaModel::findOne($tagihan->calon_siswa_id);
+            }
+
+            $notifikasi = new NotifikasiModel();
+            $notifikasi->id_tagihan = $model->tagihan_id;
+            $notifikasi->user_id = $siswa->user_id;
+            $notifikasi->pesan = "Pembayaran {$tagihan->jenisPembayaran->nama_pembayaran} ditolak.";
+            $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
+            $notifikasi->save(false);
+
             Yii::$app->session->setFlash('success', 'Pembayaran berhasil ditolak.');
         } else {
             Yii::$app->session->setFlash('error', 'Gagal menolak pembayaran.');

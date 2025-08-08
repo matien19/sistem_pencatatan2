@@ -1,12 +1,16 @@
 <?php
+
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\JsExpression;
 
 /** @var yii\web\View $this */
 
 $this->title = 'Beranda';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
+
 <div class="container-fluid">
     <div class="card bg-gradient-primary text-white mb-4">
         <div class="card-body">
@@ -42,3 +46,49 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <strong>Perhatian:</strong> Mohon periksa status pembayaran Anda secara berkala dan pastikan tidak ada keterlambatan.
     </div>
 </div>
+
+<?php
+if (!empty($notifikasiBelum)) {
+    Modal::begin([
+        'id' => 'notifikasiModal',
+        'title' => '<i class="fas fa-bell"></i> Notifikasi Terbaru',
+        'titleOptions' => ['class' => 'px-3 py-2'],
+        'size' => Modal::SIZE_LARGE,
+        'closeButton' => [
+            'label' => '×',
+            'class' => 'fas fa-times',
+            'data-bs-dismiss' => 'modal'
+        ],
+    ]);
+    ?>
+
+    <?php foreach ($notifikasiBelum as $notif): ?>
+        <div class="alert alert-light border-start border-4 border-primary mb-3">
+            <?= Html::encode($notif->pesan) ?>
+            <br>
+            <small class="text-muted"><?= Yii::$app->formatter->asDatetime($notif->tgl_kirim) ?></small>
+            <a href="<?= Url::to(['/tagihan-siswa/view', 'id' => $notif->id_tagihan]) ?>" class="btn btn-info btn-xs"> <i class="fas fa-eye"></i> Lihat</a>
+        </div>
+    <?php endforeach; ?>
+    <div class="text-end">
+        <?= Html::a('Tandai Semua Dibaca', ['beranda/tandai-notifikasi-read'], [
+            'class' => 'btn btn-primary',
+            'data-method' => 'post',
+            'data-confirm' => 'Apakah Anda yakin ingin menandai semua notifikasi sebagai sudah dibaca?',
+        ]) ?>
+    </div>
+    <div class="text-center mt-3">
+        <p class="text-muted">Anda memiliki <?= count($notifikasiBelum) ?> notifikasi belum dibaca.</p>
+    </div>
+    
+    <?php
+    Modal::end();
+
+    $this->registerJs(new JsExpression("
+        $(document).ready(function() {
+            $('#notifikasiModal').modal('show');
+            // $.post('" . Url::to(['beranda/tandai-notifikasi-read']) . "');
+        });
+    "));
+}
+?>

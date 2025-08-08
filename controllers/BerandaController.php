@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use app\models\CalonSiswaModel;
+use app\models\NotifikasiModel;
 use app\models\SiswaModel;
 use app\models\TagihanModel;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 class BerandaController extends Controller
 {
@@ -91,7 +93,12 @@ class BerandaController extends Controller
     {
         $userId = Yii::$app->user->id;
         $siswa = SiswaModel::findOne(['user_id' => $userId]);
-
+        $notifikasiBelum = NotifikasiModel::find()
+            ->where(['user_id' => $userId])
+            ->andWhere(['status_baca' => '0'])
+            ->orderBy(['tgl_kirim' => SORT_DESC])
+            ->all();
+            
         // Cek apakah siswa atau calon siswa
         if ($siswa) {
             $query = TagihanModel::find()->where(['siswa_id' => $siswa->id]);
@@ -113,6 +120,25 @@ class BerandaController extends Controller
             'siswa' => $siswa,
             'jumlahTagihan' => $jumlahTagihan,
             'jumlahLunas' => $jumlahLunas,
+            'notifikasiBelum' => $notifikasiBelum,
         ]);
+    }
+
+    public function actionTandaiNotifikasiRead()
+    {
+        $userId = Yii::$app->user->id;
+        $notifikasiBelum = NotifikasiModel::find()
+            ->where(['user_id' => $userId, 'status_baca' => '0'])
+            ->all();
+
+        // return json_encode(['status' => 'success', 'message' => $notifikasiBelum]);
+
+        foreach ($notifikasiBelum as $notif) {
+            $notif->status_baca = '1';
+            $notif->save(false);
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $this->redirect(['beranda/siswa']);
     }
 }
