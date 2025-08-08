@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 01, 2025 at 06:15 PM
+-- Generation Time: Aug 08, 2025 at 01:28 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.14
 
@@ -120,7 +120,8 @@ INSERT INTO `jenis_pembayaran` (`id`, `jurusan_id`, `kelas`, `nama_pembayaran`, 
 (15, '[\"1\"]', '[\"3\"]', 'Perpisahan', '123123.00', 2025, 'Ganjil', 'zxasd', 'siswa', '2025-07-24 19:13:07', '2025-07-24 19:13:07'),
 (16, '[\"-\"]', '[\"1\"]', 'Penilaian Sumatif Akhir Tahun', '12312.00', 2025, 'Ganjil', 'XZsadad', 'siswa', '2025-07-25 01:31:23', '2025-07-25 01:31:23'),
 (17, '[\"-\"]', '[\"-\"]', 'Penilaian Sumatif Akhir Tahun', '12331.00', 2025, 'Ganjil', 'asdasd', 'calon_siswa', '2025-07-25 01:55:16', '2025-08-01 01:11:28'),
-(18, '[\"-\"]', '[\"-\"]', 'Penilaian Sumatif Tengah Semester', '1111111.00', 2025, 'Ganjil', 'dsfdfds', 'siswa', '2025-07-27 22:18:09', '2025-07-27 22:18:09');
+(18, '[\"-\"]', '[\"-\"]', 'Penilaian Sumatif Tengah Semester', '1111111.00', 2025, 'Ganjil', 'dsfdfds', 'siswa', '2025-07-27 22:18:09', '2025-07-27 22:18:09'),
+(19, '[\"5\"]', '[\"-\"]', 'asdsa', '1111.00', 2023, 'Genap', 'sad', 'calon_siswa', '2025-08-06 02:42:17', '2025-08-06 02:42:17');
 
 -- --------------------------------------------------------
 
@@ -259,6 +260,69 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nama_pembayaran`
+--
+
+CREATE TABLE `nama_pembayaran` (
+  `id` int NOT NULL,
+  `nama_pembayaran` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `nama_pembayaran`
+--
+
+INSERT INTO `nama_pembayaran` (`id`, `nama_pembayaran`, `created_at`, `updated_at`) VALUES
+(1, 'asdsa', '2025-08-06 09:15:02', '2025-08-06 09:15:02'),
+(2, 'Perpisahan', '2025-08-06 09:34:06', '2025-08-06 09:34:06'),
+(3, 'Penilaian Sumatif Akhir Tahun	', '2025-08-06 09:34:21', '2025-08-06 09:34:21'),
+(4, 'Penilaian Sumatif Tengah Semester	', '2025-08-06 09:34:39', '2025-08-06 09:34:39'),
+(5, 'asdasdasdas', '2025-08-06 15:24:20', '2025-08-06 15:24:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifikasi`
+--
+
+CREATE TABLE `notifikasi` (
+  `id_notifikasi` int NOT NULL,
+  `user_id` int NOT NULL,
+  `id_tagihan` int NOT NULL,
+  `pesan` varchar(255) NOT NULL,
+  `tgl_kirim` date NOT NULL,
+  `status_baca` enum('0','1') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`id_notifikasi`, `user_id`, `id_tagihan`, `pesan`, `tgl_kirim`, `status_baca`, `created_at`, `updated_at`) VALUES
+(1, 45, 86, 'aaaa', '2025-08-05', '1', '2025-08-06 16:11:29', '2025-08-06 16:11:29'),
+(2, 45, 86, 'Pembayaran Rp 123 diterima. Sisa: Rp 1110988', '2025-08-07', '1', '2025-08-07 16:44:41', '2025-08-07 16:44:41'),
+(3, 45, 86, 'Pembayaran Rp 100 diterima. Sisa: Rp 1110888', '2025-08-07', '1', '2025-08-07 16:47:44', '2025-08-07 16:47:44'),
+(4, 45, 86, 'Pembayaran Rp 100 diterima. Sisa: Rp 1110888', '2025-08-07', '1', '2025-08-07 16:50:51', '2025-08-07 16:50:51'),
+(5, 45, 86, 'Pembayaran Rp 100 diterima. Sisa: Rp 1110788', '2025-08-07', '1', '2025-08-07 16:51:46', '2025-08-07 16:51:46'),
+(6, 45, 86, 'Pembayaran Rp 77 diterima. Sisa: Rp 1110711', '2025-08-08', '1', '2025-08-08 11:37:28', '2025-08-08 11:37:28'),
+(7, 45, 86, 'Pembayaran Rp 0 ditolak.', '2025-08-08', '1', '2025-08-08 12:01:39', '2025-08-08 12:01:39'),
+(8, 45, 86, 'Pembayaran Rp Penilaian Sumatif Tengah Semester ditolak.', '2025-08-08', '1', '2025-08-08 12:05:31', '2025-08-08 12:05:31'),
+(9, 45, 86, 'Pembayaran Penilaian Sumatif Tengah Semester ditolak.', '2025-08-08', '1', '2025-08-08 12:06:45', '2025-08-08 12:06:45'),
+(10, 45, 86, 'Pembayaran Rp 11111111 diterima. Sisa: Rp -10000400', '2025-08-08', '0', '2025-08-08 12:13:27', '2025-08-08 12:13:27'),
+(11, 44, 102, 'Pembayaran Rp 100 diterima. Sisa: Rp 11900', '2025-08-08', '1', '2025-08-08 12:40:07', '2025-08-08 12:40:07'),
+(12, 44, 102, 'Pembayaran Rp 100 diterima. Sisa: Rp 11800', '2025-08-08', '1', '2025-08-08 12:42:40', '2025-08-08 12:42:40'),
+(13, 44, 102, 'Pembayaran Penilaian Sumatif Akhir Tahun ditolak.', '2025-08-08', '1', '2025-08-08 12:44:17', '2025-08-08 12:44:17'),
+(14, 44, 102, 'Tagihan Penilaian Sumatif Akhir Tahun Rp 12331 telah diverifikasi dan Lunas.', '2025-08-08', '1', '2025-08-08 12:46:00', '2025-08-08 12:46:00'),
+(15, 44, 95, 'Pembayaran Rp 111 diterima. Sisa: Rp 12109', '2025-08-08', '1', '2025-08-08 12:47:26', '2025-08-08 12:47:26'),
+(16, 44, 95, 'Pembayaran Rp 111 diterima. Sisa: Rp 12109', '2025-08-08', '1', '2025-08-08 12:48:20', '2025-08-08 12:48:20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_reset_tokens`
 --
 
@@ -299,7 +363,22 @@ INSERT INTO `pembayaran` (`id`, `tagihan_id`, `nominal_bayar`, `bukti_bayar`, `t
 (6, 55, 12312312, 'bukti_1754032888.png', '2025-07-31', 'transfer', 'siswa', '1', NULL, NULL),
 (7, 104, 0, 'bukti_1754037517.png', '2025-08-08', 'transfer', 'siswa', '2', NULL, NULL),
 (8, 104, 5000, 'bukti_1754037571.png', '2025-08-09', 'transfer', 'siswa', '1', NULL, NULL),
-(9, 104, 7611, 'bukti_1754037594.png', '2025-08-14', 'transfer', 'siswa', '1', NULL, NULL);
+(9, 104, 7611, 'bukti_1754037594.png', '2025-08-14', 'transfer', 'siswa', '1', NULL, NULL),
+(10, 86, 123, 'bukti_1754584663.jpg', '2025-08-08', 'transfer', 'siswa', '1', NULL, NULL),
+(11, 86, 100, 'bukti_1754585264.png', '2025-08-08', 'transfer', 'siswa', '1', NULL, NULL),
+(12, 86, 100, 'bukti_1754585506.png', '2025-08-15', 'transfer', 'staf', '1', NULL, NULL),
+(13, 86, 77, 'bukti_1754653048.png', '2025-08-09', 'transfer', 'staf', '1', NULL, NULL),
+(14, 86, 0, 'bukti_1754653718.jpg', '2025-08-15', 'transfer', 'siswa', '2', NULL, NULL),
+(15, 86, 0, 'bukti_1754654655.png', '2025-08-09', 'cash', 'siswa', '2', NULL, NULL),
+(16, 86, 0, 'bukti_1754654788.jpg', '2025-08-09', 'transfer', 'siswa', '2', NULL, NULL),
+(17, 86, 11111111, 'bukti_1754655009.jpg', '2025-08-09', 'cash', 'siswa', '1', NULL, NULL),
+(18, 102, 331, 'bukti_1754656572.png', '2025-08-07', 'transfer', 'siswa', '1', NULL, NULL),
+(19, 102, 100, 'bukti_1754656795.png', '2025-08-07', 'transfer', 'siswa', '1', NULL, NULL),
+(20, 102, 100, 'bukti_1754656946.jpg', '2025-08-08', 'transfer', 'siswa', '1', NULL, NULL),
+(21, 102, 0, 'bukti_1754657000.jpg', '2025-08-07', 'transfer', 'siswa', '2', NULL, NULL),
+(22, 102, 130000, 'bukti_1754657133.jpg', '2025-08-07', 'transfer', 'siswa', '0', NULL, NULL),
+(23, 95, 111, 'bukti_1754657204.png', '2025-08-08', 'cash', 'siswa', '1', NULL, NULL),
+(24, 95, 111, 'bukti_1754657246.jpg', '2025-08-09', 'cash', 'staf', '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -424,7 +503,7 @@ INSERT INTO `tagihan` (`id`, `siswa_id`, `calon_siswa_id`, `jenis_pembayaran_id`
 (82, 15, NULL, 18, 1111111, 0, '2025-08-08', '2025-08-01 00:35:25', '2025-08-01 00:35:25'),
 (83, 16, NULL, 18, 1111111, 0, '2025-08-08', '2025-08-01 00:35:25', '2025-08-01 00:35:25'),
 (84, 17, NULL, 18, 1111111, 0, '2025-08-08', '2025-08-01 00:35:25', '2025-08-01 00:35:25'),
-(86, 26, NULL, 18, 1111111, 0, '2025-08-08', '2025-08-01 00:35:25', '2025-08-01 00:35:25'),
+(86, 26, NULL, 18, 1111111, 1, '2025-08-08', '2025-08-01 00:35:25', '2025-08-01 00:35:25'),
 (90, NULL, 6, 17, 12331, 0, '2025-08-23', '2025-08-01 01:11:51', '2025-08-01 01:11:51'),
 (91, NULL, 7, 17, 12331, 0, '2025-08-23', '2025-08-01 01:11:51', '2025-08-01 01:11:51'),
 (92, NULL, 8, 17, 12331, 0, '2025-08-23', '2025-08-01 01:11:51', '2025-08-01 01:11:51'),
@@ -437,7 +516,7 @@ INSERT INTO `tagihan` (`id`, `siswa_id`, `calon_siswa_id`, `jenis_pembayaran_id`
 (99, NULL, 8, 17, 12331, 0, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40'),
 (100, NULL, 9, 17, 12331, 0, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40'),
 (101, NULL, 10, 17, 12331, 0, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40'),
-(102, NULL, 13, 17, 12331, 0, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40'),
+(102, NULL, 13, 17, 12331, 1, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40'),
 (103, NULL, 14, 17, 12331, 0, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40'),
 (104, NULL, 15, 17, 12331, 1, '2025-08-08', '2025-08-01 01:28:40', '2025-08-01 01:28:40');
 
@@ -576,6 +655,18 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nama_pembayaran`
+--
+ALTER TABLE `nama_pembayaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  ADD PRIMARY KEY (`id_notifikasi`);
+
+--
 -- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
@@ -641,7 +732,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jenis_pembayaran`
 --
 ALTER TABLE `jenis_pembayaran`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -668,10 +759,22 @@ ALTER TABLE `migrations`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `nama_pembayaran`
+--
+ALTER TABLE `nama_pembayaran`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  MODIFY `id_notifikasi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `siswa`
