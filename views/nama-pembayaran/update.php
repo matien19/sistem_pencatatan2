@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\NamaPembayaranModel $model */
 
-$this->title = 'Update Nama Pembayaran Model: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Nama Pembayaran Models', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->title = 'Edit Nama Pembayaran: ' . $model->nama_pembayaran;
+$this->params['breadcrumbs'][] = ['label' => 'Nama Pembayaran', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->nama_pembayaran, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="nama-pembayaran-model-update">

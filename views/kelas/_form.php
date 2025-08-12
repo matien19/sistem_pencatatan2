@@ -1,6 +1,8 @@
 <?php
 
 use app\models\JurusanModel;
+use app\models\NamaKelasModel;
+use Faker\Guesser\Name;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -24,18 +26,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-   <?= $form->field($model, 'nama')->dropDownList([
-        '' => 'Pilih Nama',
-        'A' => 'A',
-        'B' => 'B',
-        'C' => 'C',
-        'D' => 'D',
-        'E' => 'E',
-        'F' => 'F',
-        'G' => 'G',
-        'H' => 'H',
-        'I' => 'I',
-    ], ['class' => 'form-control']) ?>
+   <?= $form->field($model, 'nama')->dropDownList(
+       ArrayHelper::map(NamaKelasModel::find()->all(), 'nama_kelas', 'nama_kelas'),
+       ['prompt' => 'Pilih Nama Kelas', 'class' => 'form-control']
+   ) ?>
 
     <?= $form->field($model, 'tahun_masuk')->dropDownList(
         $tahunOptions,

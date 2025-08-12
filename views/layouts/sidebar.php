@@ -33,6 +33,9 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?php
+
+                                            use app\models\NamaKelasModel;
+
             $userRole = Yii::$app->user->identity->role ?? '';
             $menuItems = [];
             if ($userRole == 'admin' || $userRole == 'staf' ) {
@@ -56,6 +59,12 @@
                                 'iconStyle' => 'far',
                                 'url' => ['jurusan/index'],
                                 'active' => Yii::$app->controller->id === 'jurusan',
+                            ],
+                            [
+                                'label' => 'Nama Kelas',
+                                'iconStyle' => 'far',
+                                'url' => ['nama-kelas/index'],
+                                'active' => Yii::$app->controller->id === 'nama-kelas',
                             ],
                             [
                                 'label' => 'Kelas',
