@@ -209,6 +209,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'data-method' => 'post',
                                                 'data-confirm' => 'Apakah Anda yakin ingin menolak pembayaran ini?',
                                             ]) ?>
+                                        <?php elseif ($pembayaran->status == 1): ?>
+                                            <?= Html::a('Cetak Kuitansi', ['tagihan/cetak-kuitansi', 'id' => $pembayaran->id], [
+                                                'class' => 'btn btn-info btn-sm',
+                                                'target' => '_blank'
+                                            ]) ?>
                                         <?php else: ?>
                                             <span class="text-muted">Tidak ada aksi</span>
                                         <?php endif; ?>

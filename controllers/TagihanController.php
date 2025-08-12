@@ -9,6 +9,7 @@ use app\models\PembayaranModel;
 use app\models\TagihanModel;
 use app\models\SearchTagihanModel;
 use app\models\SiswaModel;
+use Mpdf\Mpdf;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -470,5 +471,31 @@ class TagihanController extends Controller
         }
         return $this->redirect(Yii::$app->request->referrer ?: ['tagihan/index']);
     }
+
+    public function actionCetakKuitansi($id)
+    {
+        $pembayaran = PembayaranModel::findOne($id);
+
+        if (!$pembayaran || $pembayaran->status != 1) {
+            throw new \yii\web\NotFoundHttpException('Pembayaran tidak ditemukan atau belum diterima.');
+        }
+
+        $mpdf = new Mpdf([
+            'format' => 'A5-L', // Kuitansi biasanya landscape kecil
+            'margin_top' => 5,
+            'margin_bottom' => 5,
+            'margin_left' => 5,
+            'margin_right' => 5
+        ]);
+
+        $html = $this->renderPartial('_kuitansi', [
+            'pembayaran' => $pembayaran,
+            'tagihan' => $pembayaran->tagihan
+        ]);
+
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Kuitansi_' . $pembayaran->id . '.pdf', 'I');
+    }
+
 
 }
