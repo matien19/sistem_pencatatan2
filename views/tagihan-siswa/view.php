@@ -166,6 +166,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th>Tanggal Bayar</th>
                                 <th>Metode Bayar</th>
                                 <th>Bukti Bayar</th>
+                                <th>Status</th>
                                 <th>Jumlah Bayar</th>
                             </tr>
                         </thead>
@@ -186,6 +187,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ) ?>
                                         <?php else: ?>
                                         -
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($pembayaran->status == 0): ?>
+                                            <span class="badge badge-warning">Belum Diverifikasi</span>
+                                        <?php elseif ($pembayaran->status == 1): ?>
+                                            <span class="badge badge-success">Diterima</span>
+                                            <br>
+                                            <?php if ($pembayaran->status == 1): ?>
+                                                <?= Html::a('Cetak Kuitansi', ['tagihan-siswa/cetak-kuitansi', 'id' => $pembayaran->id], [
+                                                    'class' => 'btn btn-info btn-xs',
+                                                    'target' => '_blank'
+                                                ]) ?>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <span class="badge badge-danger">Ditolak</span>
                                         <?php endif; ?>
                                     </td>
                                     <td><?= 'Rp ' . number_format($pembayaran->nominal_bayar, 0, ',', '.') ?></td>
