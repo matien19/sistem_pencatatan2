@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\helpers\FonnteHelper;
 use app\models\CalonSiswaModel;
 use app\models\JenisPembayaranModel;
 use app\models\NotifikasiModel;
@@ -341,6 +342,8 @@ class TagihanController extends Controller
             $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
             $notifikasi->save(false);
 
+            FonnteHelper::kirimWa($siswa->no_hp, $notifikasi->pesan);
+
             Yii::$app->session->setFlash('success', 'Pembayaran berhasil diverifikasi.');
         } else {
             Yii::$app->session->setFlash('error', 'Gagal memverifikasi pembayaran.');
@@ -406,6 +409,9 @@ class TagihanController extends Controller
                 $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
                 $notifikasi->save(false);
 
+                FonnteHelper::kirimWa($siswa->no_hp, $notifikasi->pesan);
+
+
                 Yii::$app->session->setFlash('success', 'Pembayaran berhasil disimpan.');
                 return $this->redirect(['tagihan/view', 'id' => $model->tagihan_id]);
             }
@@ -440,6 +446,8 @@ class TagihanController extends Controller
             $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
             $notifikasi->save(false);
 
+            FonnteHelper::kirimWa($siswa->no_hp, $notifikasi->pesan);
+
             Yii::$app->session->setFlash('success', 'Pembayaran berhasil diverifikasi.');
         } else {
             Yii::$app->session->setFlash('error', 'Gagal memverifikasi pembayaran.');
@@ -465,6 +473,8 @@ class TagihanController extends Controller
             $notifikasi->tgl_kirim = date('Y-m-d H:i:s');
             $notifikasi->save(false);
 
+            FonnteHelper::kirimWa($siswa->no_hp, $notifikasi->pesan);
+            
             Yii::$app->session->setFlash('success', 'Pembayaran berhasil ditolak.');
         } else {
             Yii::$app->session->setFlash('error', 'Gagal menolak pembayaran.');
