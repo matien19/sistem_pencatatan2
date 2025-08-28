@@ -133,7 +133,12 @@ class TagihanController extends Controller
                                 'status' => 0,
                                 'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
                             ]);
-                            $model->save();
+                            if ($model->save()) {
+                                $pesan = "Halo {$calon->nama}, Anda memiliki tagihan baru: {$jenis->nama_pembayaran} sebesar Rp " . 
+                                        number_format($jenis->nominal, 0, ',', '.') . 
+                                        ". Mohon segera melakukan pembayaran sebelum {$model->tanggal_jatuh_tempo}.";
+                                FonnteHelper::kirimWa($calon->no_hp, $pesan);
+                            }
                         }
                     } else {
                         foreach ($jurusanList as $jurusan) {
@@ -146,7 +151,12 @@ class TagihanController extends Controller
                                     'status' => 0,
                                     'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
                                 ]);
-                                $model->save();
+                                if ($model->save()) {
+                                    $pesan = "Halo {$calon->nama}, Anda memiliki tagihan baru: {$jenis->nama_pembayaran} sebesar Rp " . 
+                                            number_format($jenis->nominal, 0, ',', '.') . 
+                                            ". Mohon segera melakukan pembayaran sebelum {$model->tanggal_jatuh_tempo}.";
+                                    FonnteHelper::kirimWa($calon->no_hp, $pesan);
+                                }
                             }
                         }   
                     }
@@ -169,7 +179,12 @@ class TagihanController extends Controller
                                 'status' => 0,
                                 'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
                             ]);
-                            $model->save();
+                            if ($model->save()) {
+                                $pesan = "Halo {$siswa->nama}, Anda memiliki tagihan baru: {$jenis->nama_pembayaran} sebesar Rp " . 
+                                        number_format($jenis->nominal, 0, ',', '.') . 
+                                        ". Mohon segera melakukan pembayaran sebelum {$model->tanggal_jatuh_tempo}.";
+                                FonnteHelper::kirimWa($siswa->no_hp, $pesan);
+                            }
                         }
                     }
 
@@ -185,7 +200,12 @@ class TagihanController extends Controller
                                     'status' => 0,
                                     'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
                                 ]);
-                                $model->save();
+                                if ($model->save()) {
+                                    $pesan = "Halo {$siswa->nama}, Anda memiliki tagihan baru: {$jenis->nama_pembayaran} sebesar Rp " . 
+                                            number_format($jenis->nominal, 0, ',', '.') . 
+                                            ". Mohon segera melakukan pembayaran sebelum {$model->tanggal_jatuh_tempo}.";
+                                    FonnteHelper::kirimWa($siswa->no_hp, $pesan);
+                                }
                             }
                         }
                     }
@@ -202,7 +222,12 @@ class TagihanController extends Controller
                                     'status' => 0,
                                     'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
                                 ]);
-                                $model->save();
+                                if ($model->save()) {
+                                    $pesan = "Halo {$siswa->nama}, Anda memiliki tagihan baru: {$jenis->nama_pembayaran} sebesar Rp " . 
+                                            number_format($jenis->nominal, 0, ',', '.') . 
+                                            ". Mohon segera melakukan pembayaran sebelum {$model->tanggal_jatuh_tempo}.";
+                                    FonnteHelper::kirimWa($siswa->no_hp, $pesan);
+                                }
                             }
                         }
                     }
@@ -220,7 +245,12 @@ class TagihanController extends Controller
                                         'status' => 0,
                                         'tanggal_jatuh_tempo' => $model->tanggal_jatuh_tempo,
                                     ]);
-                                    $model->save();
+                                    if ($model->save()) {
+                                        $pesan = "Halo {$siswa->nama}, Anda memiliki tagihan baru: {$jenis->nama_pembayaran} sebesar Rp " . 
+                                                number_format($jenis->nominal, 0, ',', '.') . 
+                                                ". Mohon segera melakukan pembayaran sebelum {$model->tanggal_jatuh_tempo}.";
+                                        FonnteHelper::kirimWa($siswa->no_hp, $pesan);
+                                    }
                                 }
                             }
                         }

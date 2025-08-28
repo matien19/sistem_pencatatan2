@@ -87,10 +87,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     ],
 
-                    [
-                        'class' => ActionColumn::className(),
+                   [
+                        'class' => \yii\grid\ActionColumn::className(),
+                        'template' => '{view} {delete}', // hilangkan {update}
                         'urlCreator' => function ($action, $model, $key, $index, $column) {
-                            return Url::toRoute([$action, 'id' => $model->id]);
+                            return \yii\helpers\Url::toRoute([$action, 'id' => $model->id]);
                         }
                     ],
                 ],
