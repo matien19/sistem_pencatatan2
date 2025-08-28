@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\TagihanModel $model */
 
-$this->title = 'Create Tagihan Model';
+$this->title = 'Tambah Tagihan';
 $this->params['breadcrumbs'][] = ['label' => 'Tagihan Models', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

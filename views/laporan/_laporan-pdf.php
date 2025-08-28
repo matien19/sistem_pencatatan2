@@ -52,10 +52,10 @@ $bulanNama = $bulan ? date('F', mktime(0, 0, 0, $bulan, 10)) : '-';
         </td>
         <td style="border: none; text-align: center;">
             <h3 style="margin: 0;">LEMBAGA PENDIDIKAN MA'ARIF NU CABANG BREBES</h3>
-            <h3 style="margin: 0;">SMKS MA'ARIF NU BANTARKAWUNG</h3>
+            <h3 style="margin: 0;">SMKS MA'ARIF NU 01 BANTARKAWUNG</h3>
             <h5>NPSN : 20338407     NSS : 402032902031</h5>
             <p style="margin: 0; font-size: 11px;">
-                Alamat: Jl. Kyai Mukmin No.1 Bambayang-Bantarkawung, 52274 <br>
+                Alamat: Jl. Kyai Mukmin No.1 Bangbayang-Bantarkawung, 52274 <br>
                 Email: smk_maarif_bby@yahoo.co.id | Telp: 0828-2999-247
             </p>
         </td>
@@ -65,7 +65,7 @@ $bulanNama = $bulan ? date('F', mktime(0, 0, 0, $bulan, 10)) : '-';
 <hr style="border-top: 2px solid #000; margin-top: 0;">
 
 <!-- Judul Laporan -->
-<h4 class="text-center">Laporan Tagihan <?= ucfirst($tipe) ?></h4>
+<h4 class="text-center">Laporan Pembayaran <?= ucfirst($tipe) ?></h4>
 <p class="text-center">Periode: <?= $bulanNama . ' ' . $tahun ?></p>
 
 <!-- Tabel -->
@@ -73,7 +73,7 @@ $bulanNama = $bulan ? date('F', mktime(0, 0, 0, $bulan, 10)) : '-';
     <thead>
         <tr>
             <th>No</th>
-            <th>Nama <?= $tipe === 'siswa' ? 'Siswa' : 'Calon Siswa' ?></th>
+            <th>Nama <?= $tipe === 'siswa' ? 'Siswa' : 'Siswa Baru' ?></th>
             <th>Jenis Pembayaran</th>
             <th>Jumlah Tagihan</th>
             <th>Status</th>
@@ -108,9 +108,24 @@ $bulanNama = $bulan ? date('F', mktime(0, 0, 0, $bulan, 10)) : '-';
 </table>
 
 <!-- Tanda Tangan -->
+<?php
+function tanggalIndonesia($tanggal) {
+    $bulan = [
+        1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+             'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
+    $tgl = date('j', $tanggal);
+    $bln = $bulan[(int)date('n', $tanggal)];
+    $thn = date('Y', $tanggal);
+    return "$tgl $bln $thn";
+}
+?>
+
 <div class="signature-container">
     <div class="signature-content">
-        <p class="signature-date">Bumiayu, <?= Yii::$app->formatter->asDate('now', 'php:d F Y') ?></p>
+        <p class="signature-date">
+            Bantarkawung, <?= tanggalIndonesia(time()) ?>
+        </p>
         <p class="signature-label">Mengetahui,</p>
         <p class="signature-authority">Pimpinan Pondok Pesantren</p>
     </div>

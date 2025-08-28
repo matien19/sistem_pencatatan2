@@ -43,6 +43,12 @@ $config = [
             ],
         ],
         'db' => $db,
+
+        'formatter' => [
+        'class' => 'yii\i18n\Formatter',
+        'locale' => 'id-ID', //Pakai Bahasa Indonesia
+        'defaultTimeZone' => 'Asia/Jakarta',
+    ],
         
         'urlManager' => [
             'enablePrettyUrl' => true,

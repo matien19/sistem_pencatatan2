@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a class="nav-link active" id="siswa-tab" data-toggle="tab" href="#siswa" role="tab">Siswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="calon-tab" data-toggle="tab" href="#calon" role="tab">Calon Siswa</a>
+                    <a class="nav-link" id="calon-tab" data-toggle="tab" href="#calon" role="tab">Siswa Baru</a>
                 </li>
             </ul>
 

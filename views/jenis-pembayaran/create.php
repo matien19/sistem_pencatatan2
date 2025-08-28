@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\JenisPembayaranModel $model */
 
-$this->title = 'Create Jenis Pembayaran Model';
+$this->title = 'Tambah Data Jenis Pembayaran';
 $this->params['breadcrumbs'][] = ['label' => 'Jenis Pembayaran Models', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -11,7 +11,10 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
             <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
         </div>
         <div class="card-body">
-            <p>Selamat datang, Admin! Berikut adalah ringkasan data sistem:</p>
+            <?php if (Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'staf'): ?>
+                <p>Selamat datang, <?= Html::encode(ucfirst(Yii::$app->user->identity->role)) ?>! 
+                Berikut adalah ringkasan data sistem:</p>
+            <?php endif; ?>
 
             <div class="row mb-4">
                 <div class="col-md-4">
@@ -25,8 +28,8 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 <div class="col-md-4">
                     <div class="card bg-secondary text-white">
                         <div class="card-body">
-                            <h5><?= $jumlahCalon ?> Calon Siswa</h5>
-                            <p>Calon siswa dalam proses pendaftaran.</p>
+                            <h5><?= $jumlahCalon ?> Siswa Baru</h5>
+                            <p>Siswa Baru dalam proses pendaftaran.</p>
                         </div>
                     </div>
                 </div>

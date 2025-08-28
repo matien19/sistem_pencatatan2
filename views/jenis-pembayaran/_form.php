@@ -53,7 +53,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'kepada')->radioList([
         'siswa' => 'Siswa',
-        'calon_siswa' => 'Calon Siswa'
+        'calon_siswa' => 'Siswa Baru'
     ], ['class' => 'form-check'])->label('Kepada') ?>
 
    <!-- Jurusan Select2 -->

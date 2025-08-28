@@ -210,7 +210,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'data-confirm' => 'Apakah Anda yakin ingin menolak pembayaran ini?',
                                             ]) ?>
                                         <?php elseif ($pembayaran->status == 1): ?>
-                                            <?= Html::a('Cetak Kuitansi', ['tagihan/cetak-kuitansi', 'id' => $pembayaran->id], [
+                                            <?= Html::a('Cetak Kwitansi', ['tagihan/cetak-kuitansi', 'id' => $pembayaran->id], [
                                                 'class' => 'btn btn-info btn-sm',
                                                 'target' => '_blank'
                                             ]) ?>

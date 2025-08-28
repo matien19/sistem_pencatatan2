@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
 /** @var app\models\SearchJenisPembayaranModel $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Jenis Pembayaran Models';
+$this->title = 'Jenis Pembayaran';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jenis-pembayaran-model-index">

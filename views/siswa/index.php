@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
           <a class="nav-link active" id="siswa-tab" data-toggle="tab" href="#siswa" role="tab">Siswa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="calon-tab" data-toggle="tab" href="#calon" role="tab">Calon Siswa</a>
+          <a class="nav-link" id="calon-tab" data-toggle="tab" href="#calon" role="tab">Siswa Baru</a>
         </li>
       </ul>
 
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!-- Tab Calon Siswa -->
         <div class="tab-pane fade" id="calon" role="tabpanel">
           <p>
-            <?= Html::a('Tambah Calon Siswa', ['calon-siswa/create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Tambah Siswa Baru', ['calon-siswa/create'], ['class' => 'btn btn-success']) ?>
           </p>
           <?php Pjax::begin(['id' => 'pjax-calon']); ?>
           <?= GridView::widget([
